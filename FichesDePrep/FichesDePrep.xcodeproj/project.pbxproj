@@ -16,6 +16,12 @@
 		BF5991A02519E98000C1F439 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF59919E2519E98000C1F439 /* LaunchScreen.storyboard */; };
 		BF5991AB2519E98100C1F439 /* FichesDePrepTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991AA2519E98100C1F439 /* FichesDePrepTests.swift */; };
 		BF5991B62519E98100C1F439 /* FichesDePrepUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991B52519E98100C1F439 /* FichesDePrepUITests.swift */; };
+		BF5991C42519F04000C1F439 /* TextViewTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991C32519F04000C1F439 /* TextViewTextCell.swift */; };
+		BF5991C6251A010000C1F439 /* TextViewNumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991C5251A010000C1F439 /* TextViewNumCell.swift */; };
+		BF5991C8251A059300C1F439 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991C7251A059300C1F439 /* PickerCell.swift */; };
+		BF5991CA251A25A400C1F439 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991C9251A25A400C1F439 /* ButtonCell.swift */; };
+		BF5991D0251A534100C1F439 /* CommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991CF251A534100C1F439 /* CommonCell.swift */; };
+		BF5991D2251A536600C1F439 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991D1251A536600C1F439 /* DatePickerCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +57,12 @@
 		BF5991B12519E98100C1F439 /* FichesDePrepUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FichesDePrepUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5991B52519E98100C1F439 /* FichesDePrepUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FichesDePrepUITests.swift; sourceTree = "<group>"; };
 		BF5991B72519E98100C1F439 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF5991C32519F04000C1F439 /* TextViewTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTextCell.swift; sourceTree = "<group>"; };
+		BF5991C5251A010000C1F439 /* TextViewNumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewNumCell.swift; sourceTree = "<group>"; };
+		BF5991C7251A059300C1F439 /* PickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
+		BF5991C9251A25A400C1F439 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
+		BF5991CF251A534100C1F439 /* CommonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCell.swift; sourceTree = "<group>"; };
+		BF5991D1251A536600C1F439 /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +113,7 @@
 		BF5991902519E97E00C1F439 /* FichesDePrep */ = {
 			isa = PBXGroup;
 			children = (
+				BF5991D3251A53C000C1F439 /* Common */,
 				BF5991912519E97E00C1F439 /* AppDelegate.swift */,
 				BF5991932519E97E00C1F439 /* SceneDelegate.swift */,
 				BF5991952519E97E00C1F439 /* FirstViewController.swift */,
@@ -129,6 +142,27 @@
 				BF5991B72519E98100C1F439 /* Info.plist */,
 			);
 			path = FichesDePrepUITests;
+			sourceTree = "<group>";
+		};
+		BF5991D3251A53C000C1F439 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BF5991D4251A53DF00C1F439 /* Cell */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		BF5991D4251A53DF00C1F439 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BF5991C9251A25A400C1F439 /* ButtonCell.swift */,
+				BF5991CF251A534100C1F439 /* CommonCell.swift */,
+				BF5991D1251A536600C1F439 /* DatePickerCell.swift */,
+				BF5991C7251A059300C1F439 /* PickerCell.swift */,
+				BF5991C5251A010000C1F439 /* TextViewNumCell.swift */,
+				BF5991C32519F04000C1F439 /* TextViewTextCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,8 +298,14 @@
 			files = (
 				BF5991982519E97E00C1F439 /* SecondViewController.swift in Sources */,
 				BF5991962519E97E00C1F439 /* FirstViewController.swift in Sources */,
+				BF5991C6251A010000C1F439 /* TextViewNumCell.swift in Sources */,
+				BF5991D0251A534100C1F439 /* CommonCell.swift in Sources */,
+				BF5991C42519F04000C1F439 /* TextViewTextCell.swift in Sources */,
 				BF5991922519E97E00C1F439 /* AppDelegate.swift in Sources */,
+				BF5991C8251A059300C1F439 /* PickerCell.swift in Sources */,
 				BF5991942519E97E00C1F439 /* SceneDelegate.swift in Sources */,
+				BF5991CA251A25A400C1F439 /* ButtonCell.swift in Sources */,
+				BF5991D2251A536600C1F439 /* DatePickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
