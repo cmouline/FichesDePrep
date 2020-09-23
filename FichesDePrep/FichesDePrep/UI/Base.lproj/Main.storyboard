@@ -101,6 +101,57 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
+        <!--Préférences-->
+        <scene sceneID="KfS-W4-pDV">
+            <objects>
+                <viewController id="1Jd-dJ-cQv" customClass="SettingsViewController" customModule="FichesDePrep" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ke5-b8-rFL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mes préférences" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYn-gG-SEZ">
+                                <rect key="frame" x="16" y="60" width="382" height="30.5"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="0K2-uE-1XN">
+                                <rect key="frame" x="0.0" y="122.5" width="414" height="690.5"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingCell" id="uHi-l7-XiX">
+                                        <rect key="frame" x="20" y="55.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uHi-l7-XiX" id="LJF-zI-7Bu">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="SWp-Gb-pmL" firstAttribute="top" secondItem="VYn-gG-SEZ" secondAttribute="top" constant="-16" id="N78-zv-8Us"/>
+                            <constraint firstItem="0K2-uE-1XN" firstAttribute="trailing" secondItem="SWp-Gb-pmL" secondAttribute="trailing" id="U3C-Kg-uwP"/>
+                            <constraint firstItem="0K2-uE-1XN" firstAttribute="top" secondItem="VYn-gG-SEZ" secondAttribute="bottom" constant="32" id="ehA-h3-GKA"/>
+                            <constraint firstItem="VYn-gG-SEZ" firstAttribute="leading" secondItem="SWp-Gb-pmL" secondAttribute="leading" constant="16" id="qnu-qr-bno"/>
+                            <constraint firstItem="0K2-uE-1XN" firstAttribute="leading" secondItem="SWp-Gb-pmL" secondAttribute="leading" id="r2s-Pt-6xv"/>
+                            <constraint firstItem="0K2-uE-1XN" firstAttribute="bottom" secondItem="SWp-Gb-pmL" secondAttribute="bottom" id="wfh-LY-Nop"/>
+                            <constraint firstItem="VYn-gG-SEZ" firstAttribute="trailing" secondItem="SWp-Gb-pmL" secondAttribute="trailing" constant="-16" id="zJj-H5-yUK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SWp-Gb-pmL"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Préférences" image="gear" catalog="system" selectedImage="gear" id="Hhc-Mc-SEQ">
+                        <color key="badgeColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="tableView" destination="0K2-uE-1XN" id="Qfk-qE-3Jj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kvH-08-v1i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749" y="1073"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -115,15 +166,17 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="1Jd-dJ-cQv" kind="relationship" relationship="viewControllers" id="Dvj-Ac-8kc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-55" y="360"/>
         </scene>
     </scenes>
     <resources>
         <image name="doc.on.doc" catalog="system" width="117" height="128"/>
         <image name="doc.plaintext" catalog="system" width="115" height="128"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
     </resources>
 </document>
