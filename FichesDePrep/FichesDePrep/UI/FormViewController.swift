@@ -16,7 +16,7 @@ class FormViewController: UIViewController {
         ["Domaines d'activité", "Séance numéro", "Niveau", "Durée", "Date", "Cycle"],
         ["Objectif général", "Objectif spécifique", "Matériel"],
         ["Phase", "Consigne", "Durée", "Rôle de l'enseignant", "Rôle de l'élève", "Différenciation"],
-        ["GÉNÉRER"]
+        ["ENREGISTRER", "ENREGISTRER ET GÉNÉRER"]
     ]
     var levels: [String] = ["PS", "MS", "GS", "CP", "CE1", "CE2", "CM1", "CM2"]
 
@@ -49,7 +49,7 @@ extension FormViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return 3
         case 3:
-            return 1
+            return 2
         default:
             return 0
         }
@@ -107,6 +107,7 @@ extension FormViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             } else if type == .button, let cell = tableView.dequeueReusableCell(withIdentifier: "buttonCell", for: indexPath) as? ButtonCell {
                 cell.setTitle(cellTitles[indexPath.section][indexPath.row])
+                if indexPath.row == 0 { cell.setColor(UIColor.systemGreen.withAlphaComponent(0.5)) }
                 return cell
             }
         }
