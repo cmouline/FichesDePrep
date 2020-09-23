@@ -24,6 +24,7 @@
 		BF5991CE251A3C7C00C1F439 /* PDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991CD251A3C7C00C1F439 /* PDFGenerator.swift */; };
 		BF5991D0251A534100C1F439 /* CommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991CF251A534100C1F439 /* CommonCell.swift */; };
 		BF5991D2251A536600C1F439 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991D1251A536600C1F439 /* DatePickerCell.swift */; };
+		BF5991DA251B422A00C1F439 /* PDFPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991D9251B422A00C1F439 /* PDFPreviewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		BF5991CD251A3C7C00C1F439 /* PDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFGenerator.swift; sourceTree = "<group>"; };
 		BF5991CF251A534100C1F439 /* CommonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCell.swift; sourceTree = "<group>"; };
 		BF5991D1251A536600C1F439 /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
+		BF5991D9251B422A00C1F439 /* PDFPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				BF5991992519E97E00C1F439 /* Main.storyboard */,
 				BF5991952519E97E00C1F439 /* FormViewController.swift */,
 				BF5991972519E97E00C1F439 /* PrepFileListViewController.swift */,
+				BF5991D9251B422A00C1F439 /* PDFPreviewViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF5991DA251B422A00C1F439 /* PDFPreviewViewController.swift in Sources */,
 				BF5991C6251A010000C1F439 /* TextViewNumCell.swift in Sources */,
 				BF5991CC251A304100C1F439 /* PrepFile.swift in Sources */,
 				BF5991982519E97E00C1F439 /* PrepFileListViewController.swift in Sources */,
