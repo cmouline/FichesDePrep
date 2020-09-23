@@ -117,17 +117,13 @@
 		BF5991902519E97E00C1F439 /* FichesDePrep */ = {
 			isa = PBXGroup;
 			children = (
-				BF5991D3251A53C000C1F439 /* Common */,
+				BF59919E2519E98000C1F439 /* LaunchScreen.storyboard */,
 				BF5991912519E97E00C1F439 /* AppDelegate.swift */,
 				BF5991932519E97E00C1F439 /* SceneDelegate.swift */,
-				BF5991952519E97E00C1F439 /* FormViewController.swift */,
-				BF5991972519E97E00C1F439 /* PrepFileListViewController.swift */,
-				BF5991992519E97E00C1F439 /* Main.storyboard */,
-				BF59919C2519E98000C1F439 /* Assets.xcassets */,
-				BF59919E2519E98000C1F439 /* LaunchScreen.storyboard */,
-				BF5991A12519E98000C1F439 /* Info.plist */,
-				BF5991CB251A304100C1F439 /* PrepFile.swift */,
-				BF5991CD251A3C7C00C1F439 /* PDFGenerator.swift */,
+				BF5991D3251A53C000C1F439 /* Common */,
+				BF5991D7251B3A5700C1F439 /* Core */,
+				BF5991D6251B3A3B00C1F439 /* UI */,
+				BF5991D5251B39EB00C1F439 /* Resources */,
 			);
 			path = FichesDePrep;
 			sourceTree = "<group>";
@@ -169,6 +165,42 @@
 				BF5991C32519F04000C1F439 /* TextViewTextCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		BF5991D5251B39EB00C1F439 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BF5991A12519E98000C1F439 /* Info.plist */,
+				BF59919C2519E98000C1F439 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BF5991D6251B3A3B00C1F439 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				BF5991992519E97E00C1F439 /* Main.storyboard */,
+				BF5991952519E97E00C1F439 /* FormViewController.swift */,
+				BF5991972519E97E00C1F439 /* PrepFileListViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		BF5991D7251B3A5700C1F439 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				BF5991D8251B3A5E00C1F439 /* Model */,
+				BF5991CD251A3C7C00C1F439 /* PDFGenerator.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		BF5991D8251B3A5E00C1F439 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF5991CB251A304100C1F439 /* PrepFile.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -487,8 +519,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TXR92Q9H3H;
-				INFOPLIST_FILE = FichesDePrep/Info.plist;
+				INFOPLIST_FILE = FichesDePrep/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -506,8 +539,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TXR92Q9H3H;
-				INFOPLIST_FILE = FichesDePrep/Info.plist;
+				INFOPLIST_FILE = FichesDePrep/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
