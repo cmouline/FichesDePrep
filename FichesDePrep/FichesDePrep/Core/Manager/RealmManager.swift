@@ -33,6 +33,10 @@ class RealmManager {
         realm.add(object)
     }
     
+    func delete(_ object: Object) {
+        realm.delete(object)
+    }
+    
     func objects<Element>(_ type: Element.Type) -> Results<Element> where Element : Object {
         return realm.objects(type)
     }

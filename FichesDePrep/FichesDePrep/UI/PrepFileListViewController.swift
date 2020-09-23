@@ -22,7 +22,12 @@ class PrepFileListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        if prepFiles.isEmpty {
+        RealmManager.shared.write {
+            for file in prepFiles {
+                RealmManager.shared.delete(file)
+            }
+        }
+        RealmManager.shared.write {
             RealmManager.shared.add(PrepFile(title: "Fiche de prep 1"))
             RealmManager.shared.add(PrepFile(title: "Fiche de preparation test", activityKind: "Arts plastiques", seanceNumber: 2, level: "MS", duration: 20, date: Date(), cycle: 1, mainGoal: "Peindre et faire des collages", specificGoal: "Apprendre à se servir du tube de colle et des tubes de peinture", material: "Colle, pinceaux, peinture", phase: "Regroupement", consigne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", phaseDuration: "10", teacherRole: "Explique les consignes", pupilRole: "Fais son taf", differenciation: "", isDraft: false))
             RealmManager.shared.add(PrepFile(title: "Fiche de prep 2"))
@@ -34,9 +39,8 @@ class PrepFileListViewController: UIViewController {
             RealmManager.shared.add(PrepFile(title: "Fiche de prep 8"))
             RealmManager.shared.add(PrepFile(title: "Fiche de prep 9"))
             RealmManager.shared.add(PrepFile(title: "Fiche de prep 10"))
-            
-            prepFiles = { RealmManager.shared.objects(PrepFile.self) }()
         }
+        prepFiles = { RealmManager.shared.objects(PrepFile.self) }()
         completePrepFiles = prepFiles.filter({ !$0.isDraft })
         draftPrepFiles = prepFiles.filter({ $0.isDraft })
     }
