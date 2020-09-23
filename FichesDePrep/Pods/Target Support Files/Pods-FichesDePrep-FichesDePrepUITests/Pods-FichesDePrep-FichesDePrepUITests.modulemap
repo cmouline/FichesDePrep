@@ -1,0 +1,6 @@
+framework module Pods_FichesDePrep_FichesDePrepUITests {
+  umbrella header "Pods-FichesDePrep-FichesDePrepUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

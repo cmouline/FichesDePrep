@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import RealmSwift
 
-class PrepFile {
+class PrepFile: Object {
     
     var creationDate: Date = Date()
     var lastModificationDate: Date = Date()
@@ -34,7 +35,7 @@ class PrepFile {
     
     var isDraft: Bool = true
     
-    init(title: String? = nil, activityKind: String? = nil, seanceNumber: Int? = nil, level: String? = nil, duration: Int? = nil, date: Date? = nil, cycle: Int? = nil, mainGoal: String? = nil, specificGoal: String? = nil, material: String? = nil, phase: String? = nil, consigne: String? = nil, phaseDuration: String? = nil, teacherRole: String? = nil, pupilRole: String? = nil, differenciation: String? = nil) {
+    init(title: String? = nil, activityKind: String? = nil, seanceNumber: Int? = nil, level: String? = nil, duration: Int? = nil, date: Date? = nil, cycle: Int? = nil, mainGoal: String? = nil, specificGoal: String? = nil, material: String? = nil, phase: String? = nil, consigne: String? = nil, phaseDuration: String? = nil, teacherRole: String? = nil, pupilRole: String? = nil, differenciation: String? = nil, isDraft: Bool = true) {
         if let tt = title {
             self.title = tt
         }
@@ -83,5 +84,10 @@ class PrepFile {
         if let df = differenciation {
             self.differenciation = df
         }
+        self.isDraft = isDraft
+    }
+    
+    required init() {
+        fatalError("init() has not been implemented")
     }
 }

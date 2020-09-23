@@ -1,0 +1,6 @@
+framework module Pods_FichesDePrep {
+  umbrella header "Pods-FichesDePrep-umbrella.h"
+
+  export *
+  module * { export * }
+}
