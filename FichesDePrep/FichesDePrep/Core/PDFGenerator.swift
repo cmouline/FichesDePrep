@@ -33,14 +33,14 @@ class PDFGenerator {
         let data = renderer.pdfData { (context) in
             context.beginPage()
             let domainBottom = addText(pageRect: pageRect, withText: "Domaine: \(prepFileData.activityKind)")
-            let seanceNumberBottom = addText(pageRect: pageRect, withText: "Séance numéro: \(prepFileData.activityKind)", under: domainBottom)
-            let levelBottom = addText(pageRect: pageRect, withText: "Niveau: \(prepFileData.activityKind)", under: seanceNumberBottom)
-            let durationBottom = addText(pageRect: pageRect, withText: "Durée: \(prepFileData.activityKind)min", under: levelBottom)
-            let mainGoalBottom = addText(pageRect: pageRect, withText: "Objectif général: \(prepFileData.activityKind)", under: durationBottom)
-            let specificGoalBottom = addText(pageRect: pageRect, withText: "Objectif spécifique: \(prepFileData.activityKind)", under: mainGoalBottom)
-            let materialBottom = addText(pageRect: pageRect, withText: "Matériel: \(prepFileData.activityKind)", under: specificGoalBottom)
+            let seanceNumberBottom = addText(pageRect: pageRect, withText: "Séance numéro: \(prepFileData.seanceNumber)", under: domainBottom)
+            let levelBottom = addText(pageRect: pageRect, withText: "Niveau: \(prepFileData.level)", under: seanceNumberBottom)
+            let durationBottom = addText(pageRect: pageRect, withText: "Durée: \(prepFileData.duration)min", under: levelBottom)
+            let mainGoalBottom = addText(pageRect: pageRect, withText: "Objectif général: \(prepFileData.mainGoal)", under: durationBottom)
+            let specificGoalBottom = addText(pageRect: pageRect, withText: "Objectif spécifique: \(prepFileData.specificGoal)", under: mainGoalBottom)
+            let materialBottom = addText(pageRect: pageRect, withText: "Matériel: \(prepFileData.material)", under: specificGoalBottom)
 
-            _ = addText(pageRect: pageRect, withText: "Phase: \(prepFileData.activityKind)", under: materialBottom)
+            _ = addText(pageRect: pageRect, withText: "Phase: \(prepFileData.phase)", under: materialBottom)
         }
         
         return data
