@@ -15,6 +15,9 @@ class TextViewNumCell: CommonCell {
     override func setup() {
         super.setup()
         textView.keyboardType = .numberPad
+        textView.layer.borderColor = UIColor.separator.cgColor
+        textView.layer.borderWidth = 0.5
+        textView.layer.cornerRadius = 8
         textView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(textView)
         
@@ -22,8 +25,8 @@ class TextViewNumCell: CommonCell {
         contentView.addConstraints([
             NSLayoutConstraint(item: titleLabel, attribute: .bottom, relatedBy: .equal, toItem: textView, attribute: .top, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: textView, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 8),
-            NSLayoutConstraint(item: textView, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .trailing, multiplier: 1, constant: 8),
-            NSLayoutConstraint(item: textView, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1, constant: 8),
+            NSLayoutConstraint(item: textView, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .trailing, multiplier: 1, constant: -8),
+            NSLayoutConstraint(item: textView, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1, constant: -8),
             NSLayoutConstraint(item: textView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 40)
         ])
     }

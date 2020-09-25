@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,7 +39,8 @@
                                 <sections/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Zfw-jx-09K" firstAttribute="top" secondItem="on2-wV-t4N" secondAttribute="bottom" constant="32" id="3g8-gx-yFk"/>
                             <constraint firstItem="Zfw-jx-09K" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="Krs-tY-Hqg"/>
@@ -46,10 +50,9 @@
                             <constraint firstItem="on2-wV-t4N" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="16" id="qMN-ZE-8VQ"/>
                             <constraint firstItem="on2-wV-t4N" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" constant="-16" id="u1g-l2-rDa"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Nouvelle Fiche" image="doc.plaintext" catalog="system" selectedImage="doc.plaintext" id="acW-dT-cKf">
-                        <color key="badgeColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="badgeColor" systemColor="labelColor"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="tableView" destination="Zfw-jx-09K" id="aCb-nr-Pbq"/>
@@ -67,31 +70,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CCb-nJ-DdK">
+                                <rect key="frame" x="16" y="50.5" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="CCb-nJ-DdK" secondAttribute="height" multiplier="1:1" id="BuU-qF-WmS"/>
+                                    <constraint firstAttribute="width" constant="50" id="MS0-0n-CyY"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="xmark.circle" catalog="system" symbolScale="large"/>
+                                </state>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mes fiches" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifs-xy-X4W">
-                                <rect key="frame" x="16" y="60" width="382" height="30.5"/>
+                                <rect key="frame" x="74" y="60" width="266" height="30.5"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wd8-mY-zLu">
+                                <rect key="frame" x="348" y="50.5" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="EFb-Vb-LSi"/>
+                                    <constraint firstAttribute="width" secondItem="Wd8-mY-zLu" secondAttribute="height" multiplier="1:1" id="JnZ-md-gqG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="tray.fill" catalog="system" symbolScale="large"/>
+                                </state>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5hv-XV-mXd">
                                 <rect key="frame" x="0.0" y="122.5" width="414" height="690.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Ifs-xy-X4W" firstAttribute="leading" secondItem="CCb-nJ-DdK" secondAttribute="trailing" constant="8" id="0QN-JT-YW4"/>
                             <constraint firstItem="5hv-XV-mXd" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="0T9-V0-vQB"/>
+                            <constraint firstItem="CCb-nJ-DdK" firstAttribute="centerY" secondItem="Ifs-xy-X4W" secondAttribute="centerY" id="3oH-kB-z4R"/>
                             <constraint firstItem="5hv-XV-mXd" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="Q4M-fJ-wpG"/>
-                            <constraint firstItem="Ifs-xy-X4W" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="16" id="XpP-Si-Nbl"/>
+                            <constraint firstItem="Wd8-mY-zLu" firstAttribute="centerY" secondItem="Ifs-xy-X4W" secondAttribute="centerY" id="ZUt-x3-OuH"/>
+                            <constraint firstItem="CCb-nJ-DdK" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="16" id="f37-Ih-2wJ"/>
                             <constraint firstItem="5hv-XV-mXd" firstAttribute="top" secondItem="Ifs-xy-X4W" secondAttribute="bottom" constant="32" id="jBP-UY-ihW"/>
-                            <constraint firstItem="Ifs-xy-X4W" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" constant="-16" id="n2b-ja-z9u"/>
                             <constraint firstItem="5hv-XV-mXd" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" id="oc4-Ms-GE0"/>
                             <constraint firstItem="Ifs-xy-X4W" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="16" id="sj2-Nv-WNW"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="Wd8-mY-zLu" secondAttribute="trailing" constant="16" id="wdI-1r-E8J"/>
+                            <constraint firstItem="Wd8-mY-zLu" firstAttribute="leading" secondItem="Ifs-xy-X4W" secondAttribute="trailing" constant="8" id="ziX-wE-ogc"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Mes Fiches" image="doc.on.doc" catalog="system" selectedImage="doc.on.doc" id="cPa-gy-q4n">
-                        <color key="badgeColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="badgeColor" systemColor="labelColor"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="tableView" destination="5hv-XV-mXd" id="GVy-f9-RZe"/>
@@ -160,8 +190,8 @@
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <color key="selectedImageTintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="tintColor" systemColor="labelColor"/>
+                        <color key="selectedImageTintColor" systemColor="labelColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
@@ -175,8 +205,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="doc.on.doc" catalog="system" width="117" height="128"/>
+        <image name="doc.on.doc" catalog="system" width="116" height="128"/>
         <image name="doc.plaintext" catalog="system" width="115" height="128"/>
         <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="tray.fill" catalog="system" width="128" height="88"/>
+        <image name="xmark.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

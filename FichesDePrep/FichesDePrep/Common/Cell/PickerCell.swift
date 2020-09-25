@@ -24,8 +24,8 @@ class PickerCell: CommonCell {
         contentView.addConstraints([
             NSLayoutConstraint(item: titleLabel, attribute: .bottom, relatedBy: .equal, toItem: picker, attribute: .top, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: picker, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: 8),
-            NSLayoutConstraint(item: picker, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .trailing, multiplier: 1, constant: 8),
-            NSLayoutConstraint(item: picker, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1, constant: 8),
+            NSLayoutConstraint(item: picker, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .trailing, multiplier: 1, constant: -8),
+            NSLayoutConstraint(item: picker, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1, constant: -8),
             NSLayoutConstraint(item: picker, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 150)
         ])
     }
