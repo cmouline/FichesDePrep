@@ -13,7 +13,7 @@
         <!--Nouvelle Fiche-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FormViewController" customModule="FichesDePrep" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="PrepFileFormViewController" customModule="FichesDePrep" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,16 +26,6 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="132" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Zfw-jx-09K">
                                 <rect key="frame" x="0.0" y="122.5" width="414" height="690.5"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textViewCell" id="89r-oR-J09" customClass="TextViewTextCell" customModule="FichesDePrep" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="55.5" width="374" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="89r-oR-J09" id="qeD-G8-Uqe">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                                 <sections/>
                             </tableView>
                         </subviews>
@@ -159,7 +149,8 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="SWp-Gb-pmL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="SWp-Gb-pmL" firstAttribute="top" secondItem="VYn-gG-SEZ" secondAttribute="top" constant="-16" id="N78-zv-8Us"/>
                             <constraint firstItem="0K2-uE-1XN" firstAttribute="trailing" secondItem="SWp-Gb-pmL" secondAttribute="trailing" id="U3C-Kg-uwP"/>
@@ -169,10 +160,9 @@
                             <constraint firstItem="0K2-uE-1XN" firstAttribute="bottom" secondItem="SWp-Gb-pmL" secondAttribute="bottom" id="wfh-LY-Nop"/>
                             <constraint firstItem="VYn-gG-SEZ" firstAttribute="trailing" secondItem="SWp-Gb-pmL" secondAttribute="trailing" constant="-16" id="zJj-H5-yUK"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="SWp-Gb-pmL"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Préférences" image="gear" catalog="system" selectedImage="gear" id="Hhc-Mc-SEQ">
-                        <color key="badgeColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="badgeColor" systemColor="labelColor"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="tableView" destination="0K2-uE-1XN" id="Qfk-qE-3Jj"/>
