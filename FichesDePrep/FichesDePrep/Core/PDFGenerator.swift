@@ -25,48 +25,60 @@ class PDFGenerator {
         let format = UIGraphicsPDFRendererFormat()
         format.documentInfo = pdfMetaData as [String: Any]
         
-        let pageWidth = 11 * 72.0
-        let pageHeight = 8.5 * 72.0
-        let pageRect = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
-        
+        let pageRect = CGRect(x: 0, y: 0, width: 11.75 * 72.0, height: 8.25 * 72.0)
+        let pageWidth = pageRect.width - 24
+        let pageHeight = pageRect.height - 24
+
         let renderer = UIGraphicsPDFRenderer(bounds: pageRect, format: format)
         let data = renderer.pdfData { (context) in
             context.beginPage()
-            let domainBottom = addText(pageRect: pageRect, withText: "Domaine: \(prepFileData.activityKind)")
-            let seanceNumberBottom = addText(pageRect: pageRect, withText: "Séance numéro: \(prepFileData.seanceNumber)", under: domainBottom)
-            let levelBottom = addText(pageRect: pageRect, withText: "Niveau: \(prepFileData.level)", under: seanceNumberBottom)
-            let durationBottom = addText(pageRect: pageRect, withText: "Durée: \(prepFileData.duration)min", under: levelBottom)
-            let mainGoalBottom = addText(pageRect: pageRect, withText: "Objectif général: \(prepFileData.mainGoal)", under: durationBottom)
-            let specificGoalBottom = addText(pageRect: pageRect, withText: "Objectif spécifique: \(prepFileData.specificGoal)", under: mainGoalBottom)
-            let materialBottom = addText(pageRect: pageRect, withText: "Matériel: \(prepFileData.material)", under: specificGoalBottom)
+            let domainBottom = addText(ofWidth: pageWidth, entitled: "Domaine d'activité: ", withText: prepFileData.activityKind)
+            let titleBottom = addText(ofWidth: pageWidth, entitled: "Titre: ", withText: prepFileData.title, under: domainBottom.0)
+            let seanceNumberBottom = addText(ofWidth: pageWidth / 2, entitled: "Séance nº: ", withText: "\(prepFileData.seanceNumber)", under: titleBottom.0)
+            let _ = addText(ofWidth: pageWidth, entitled: "Date: ", withText: "\(prepFileData.date)", under: titleBottom.0, next: seanceNumberBottom.1)
+            let levelBottom = addText(ofWidth: pageWidth / 2, entitled: "Niveau: ", withText: prepFileData.level, under: seanceNumberBottom.0)
+            let _ = addText(ofWidth: pageWidth, entitled: "Cycle: ", withText: "\(prepFileData.cycle)", under: seanceNumberBottom.0, next: levelBottom.1)
+            let durationBottom = addText(ofWidth: pageWidth, entitled: "Durée: ", withText: "\(prepFileData.duration)min", under: levelBottom.0)
+            let mainGoalBottom = addText(ofWidth: pageWidth, entitled: "Objectif général: ", withText: prepFileData.mainGoal, under: durationBottom.0 + 15)
+            let specificGoalBottom = addText(ofWidth: pageWidth, entitled: "Objectif spécifique: ", withText: prepFileData.specificGoal, under: mainGoalBottom.0)
+            let materialBottom = addText(ofWidth: pageWidth, entitled: "Matériel: ", withText: prepFileData.material, under: specificGoalBottom.0)
 
-            _ = addText(pageRect: pageRect, withText: "Phase: \(prepFileData.phase)", under: materialBottom)
+            let phasePosition = addText(ofWidth: pageWidth * 0.125, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Phase\n", withText: prepFileData.phase, under: materialBottom.0 + 20)
+            let consignePosition = addText(ofWidth: pageWidth * 0.350, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Consigne\n", withText: prepFileData.consigne, under: materialBottom.0 + 20, next: phasePosition.1 + 5)
+            let durationPosition = addText(ofWidth: pageWidth * 0.05, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Durée\n", withText: "\(prepFileData.phaseDuration)min", under: materialBottom.0 + 20, next: consignePosition.1 + 5)
+            let teacherRolePosition = addText(ofWidth: pageWidth * 0.175, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Rôle de l'enseignant\n", withText: prepFileData.teacherRole, under: materialBottom.0 + 20, next: durationPosition.1 + 5)
+            let pupilRolePosition = addText(ofWidth: pageWidth * 0.150, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Rôle de l'élève\n", withText: prepFileData.pupilRole, under: materialBottom.0 + 20, next: teacherRolePosition.1 + 5)
+            let _ = addText(ofWidth: pageWidth * 0.150, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Différenciation\n", withText: prepFileData.differenciation, under: materialBottom.0 + 20, next: pupilRolePosition.1)
         }
         
         return data
     }
     
-    func addText(pageRect: CGRect, withText text: String, under bottomPosition: CGFloat? = nil, next rightPosition: CGFloat? = nil) -> CGFloat {
+    func addText(ofWidth: CGFloat, andHeight: CGFloat? = nil, entitled: String, withText text: String, under bottomPosition: CGFloat = 12, next rightPosition: CGFloat = 12) -> (CGFloat, CGFloat) {
         let textFont = UIFont.systemFont(ofSize: 12.0, weight: .regular)
-        let domainAttributes: [NSAttributedString.Key: Any] =
-            [NSAttributedString.Key.font: textFont]
-        let attributedText = NSAttributedString(string: text, attributes: domainAttributes)
-        let textStringSize = attributedText.size()
-        var yBase: CGFloat = 36
-        var xBase: CGFloat = 36
-        if let bottom = bottomPosition {
-            yBase = bottom
-        }
-        if let right = rightPosition {
-            xBase = right
-        }
-        let textStringRect = CGRect(x: xBase,
-                                    y: yBase,
-                                    width: pageRect.width - (36 * 2),
-                                    height: textStringSize.height)
+        let boldFont = UIFont.systemFont(ofSize: 12.0, weight: .bold)
+
+        let entitledAttributes: [NSAttributedString.Key: Any] =
+            [NSAttributedString.Key.font: boldFont]
+        let entitledText = NSMutableAttributedString(string: entitled, attributes: entitledAttributes)
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .justified
+        paragraphStyle.lineBreakMode = .byWordWrapping
+        let textAttributes: [NSAttributedString.Key: Any] =
+            [NSAttributedString.Key.font: textFont,
+             NSAttributedString.Key.paragraphStyle: paragraphStyle]
+        let attributedText = NSMutableAttributedString(string: text, attributes: textAttributes)
         
-        attributedText.draw(in: textStringRect)
-        return textStringRect.origin.y + textStringRect.size.height
+        entitledText.append(attributedText)
+        let textStringSize = entitledText.size()
+        let textStringRect = CGRect(x: rightPosition,
+                                    y: bottomPosition,
+                                    width: ofWidth,
+                                    height: andHeight == nil ? textStringSize.height : andHeight!)
+        
+        entitledText.draw(in: textStringRect)
+        return (textStringRect.origin.y + textStringRect.size.height, textStringRect.origin.x + textStringRect.size.width)
     }
 
     
