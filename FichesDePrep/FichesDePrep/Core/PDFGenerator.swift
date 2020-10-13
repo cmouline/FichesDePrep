@@ -44,11 +44,11 @@ class PDFGenerator {
             let materialBottom = addText(ofWidth: pageWidth, entitled: "Matériel: ", withText: prepFileData.material, under: specificGoalBottom.0)
 
             let phasePosition = addText(ofWidth: pageWidth * 0.125, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Phase\n", withText: "", under: materialBottom.0 + 20)
-            let consignePosition = addText(ofWidth: pageWidth * 0.350, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Consigne\n", withText: prepFileData.phases?.list[0].consigne as! String, under: materialBottom.0 + 20, next: phasePosition.1 + 5)
-            let durationPosition = addText(ofWidth: pageWidth * 0.05, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Durée\n", withText: "\(prepFileData.phases?.list[0].phaseDuration) min", under: materialBottom.0 + 20, next: consignePosition.1 + 5)
-            let teacherRolePosition = addText(ofWidth: pageWidth * 0.175, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Rôle de l'enseignant\n", withText: prepFileData.phases?.list[0].teacherRole ?? "", under: materialBottom.0 + 20, next: durationPosition.1 + 5)
-            let pupilRolePosition = addText(ofWidth: pageWidth * 0.150, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Rôle de l'élève\n", withText: prepFileData.phases?.list[0].pupilRole ?? "", under: materialBottom.0 + 20, next: teacherRolePosition.1 + 5)
-            let _ = addText(ofWidth: pageWidth * 0.150, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Différenciation\n", withText: prepFileData.phases?.list[0].differenciation ?? "", under: materialBottom.0 + 20, next: pupilRolePosition.1)
+//            let consignePosition = addText(ofWidth: pageWidth * 0.350, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Consigne\n", withText: prepFileData.phases?.list[0].consigne as! String, under: materialBottom.0 + 20, next: phasePosition.1 + 5)
+//            let durationPosition = addText(ofWidth: pageWidth * 0.05, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Durée\n", withText: "\(prepFileData.phases?.list[0].phaseDuration) min", under: materialBottom.0 + 20, next: consignePosition.1 + 5)
+//            let teacherRolePosition = addText(ofWidth: pageWidth * 0.175, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Rôle de l'enseignant\n", withText: prepFileData.phases?.list[0].teacherRole ?? "", under: materialBottom.0 + 20, next: durationPosition.1 + 5)
+//            let pupilRolePosition = addText(ofWidth: pageWidth * 0.150, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Rôle de l'élève\n", withText: prepFileData.phases?.list[0].pupilRole ?? "", under: materialBottom.0 + 20, next: teacherRolePosition.1 + 5)
+//            let _ = addText(ofWidth: pageWidth * 0.150, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Différenciation\n", withText: prepFileData.phases?.list[0].differenciation ?? "", under: materialBottom.0 + 20, next: pupilRolePosition.1)
         }
         
         return data

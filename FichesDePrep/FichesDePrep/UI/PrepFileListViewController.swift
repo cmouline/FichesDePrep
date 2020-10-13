@@ -27,34 +27,38 @@ class PrepFileListViewController: UIViewController {
                 RealmManager.shared.delete(file)
             }
         }
-//        RealmManager.shared.write {
-//            RealmManager.shared.add(PrepFile(title: "Fiche de prep 1"))
-//            RealmManager.shared.add(PrepFile(
-//                                        title: "Fiche de preparation test",
-//                                        activityKind: "Arts plastiques",
-//                                        seanceNumber: 2,
-//                                        level: "MS",
-//                                        duration: 20,
-//                                        date: Date(),
-//                                        cycle: 1,
-//                                        mainGoal: "Peindre et faire des collages",
-//                                        specificGoal: "Apprendre à se servir du tube de colle et des tubes de peinture",
-//                                        material: "Colle, pinceaux, peinture",
-//                                        phases: [Phase(phaseNumber: 1, consigne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", phaseDuration: 10, teacherRole: "Explique les consignes", pupilRole: "Fais son taf", differenciation: "")],
-//                                        isDraft: false))
-//            RealmManager.shared.add(PrepFile(title: "Fiche de prep 2"))
-//            RealmManager.shared.add(PrepFile(title: "Fiche de prep 3"))
-//            RealmManager.shared.add(PrepFile(title: "Fiche de prep 4"))
-//            RealmManager.shared.add(PrepFile(title: "Fiche de prep 5"))
-//            RealmManager.shared.add(PrepFile(title: "Fiche de prep 6"))
-//            RealmManager.shared.add(PrepFile(title: "Fiche de prep 7"))
-//            RealmManager.shared.add(PrepFile(title: "Fiche de prep 8"))
-//            RealmManager.shared.add(PrepFile(title: "Fiche de prep 9"))
-//            RealmManager.shared.add(PrepFile(title: "Fiche de prep 10"))
-//        }
-        prepFiles = { RealmManager.shared.objects(PrepFile.self) }()
+        RealmManager.shared.write() {
+            RealmManager.shared.add(PrepFile(title: "Fiche de prep 1"))
+            RealmManager.shared.add(PrepFile(
+                                        title: "Fiche de preparation test",
+                                        activityKind: "Arts plastiques",
+                                        seanceNumber: 2,
+                                        level: "MS",
+                                        duration: 20,
+                                        date: Date(),
+                                        cycle: 1,
+                                        mainGoal: "Peindre et faire des collages",
+                                        specificGoal: "Apprendre à se servir du tube de colle et des tubes de peinture",
+                                        material: "Colle, pinceaux, peinture",
+                                        phases: [Phase(phaseNumber: 1, consigne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", phaseDuration: 10, teacherRole: "Explique les consignes", pupilRole: "Fais son taf", differenciation: "")],
+                                        isDraft: false))
+            RealmManager.shared.add(PrepFile(title: "Fiche de prep 2"))
+            RealmManager.shared.add(PrepFile(title: "Fiche de prep 3"))
+            RealmManager.shared.add(PrepFile(title: "Fiche de prep 4"))
+            RealmManager.shared.add(PrepFile(title: "Fiche de prep 5"))
+            RealmManager.shared.add(PrepFile(title: "Fiche de prep 6"))
+            RealmManager.shared.add(PrepFile(title: "Fiche de prep 7"))
+            RealmManager.shared.add(PrepFile(title: "Fiche de prep 8"))
+            RealmManager.shared.add(PrepFile(title: "Fiche de prep 9"))
+            RealmManager.shared.add(PrepFile(title: "Fiche de prep 10"))
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        prepFiles = RealmManager.shared.objects(PrepFile.self)
         completePrepFiles = prepFiles.filter({ !$0.isDraft })
         draftPrepFiles = prepFiles.filter({ $0.isDraft })
+        tableView.reloadData()
     }
 }
 
