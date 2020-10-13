@@ -26,16 +26,11 @@ class PrepFile: Object {
     @objc dynamic var specificGoal: String = ""
     @objc dynamic var material: String = ""
     
-    @objc dynamic var phase: String = ""
-    @objc dynamic var consigne: String = ""
-    @objc dynamic var phaseDuration: String = ""
-    @objc dynamic var teacherRole: String = ""
-    @objc dynamic var pupilRole: String = ""
-    @objc dynamic var differenciation: String = ""
+    @objc dynamic var phases: PhaseList? = PhaseList(list: [])
     
     dynamic var isDraft: Bool = true
     
-    init(title: String? = nil, activityKind: String? = nil, seanceNumber: Int? = nil, level: String? = nil, duration: Int? = nil, date: Date? = nil, cycle: Int? = nil, mainGoal: String? = nil, specificGoal: String? = nil, material: String? = nil, phase: String? = nil, consigne: String? = nil, phaseDuration: String? = nil, teacherRole: String? = nil, pupilRole: String? = nil, differenciation: String? = nil, isDraft: Bool = true) {
+    init(title: String? = nil, activityKind: String? = nil, seanceNumber: Int? = nil, level: String? = nil, duration: Int? = nil, date: Date? = nil, cycle: Int? = nil, mainGoal: String? = nil, specificGoal: String? = nil, material: String? = nil, phases: [Phase] = [], isDraft: Bool = true) {
         if let tt = title {
             self.title = tt
         }
@@ -66,28 +61,50 @@ class PrepFile: Object {
         if let mt = material {
             self.material = mt
         }
-        if let ph = phase {
-            self.phase = ph
-        }
-        if let cs = consigne {
-            self.consigne = cs
-        }
-        if let pd = phaseDuration {
-            self.phaseDuration = pd
-        }
-        if let tr = teacherRole {
-            self.teacherRole = tr
-        }
-        if let pr = pupilRole {
-            self.pupilRole = pr
-        }
-        if let df = differenciation {
-            self.differenciation = df
-        }
+        self.phases = PhaseList(list: phases)
         self.isDraft = isDraft
         super.init()
     }
     
     required init() {
+//        fatalError("init() has not been implemented")
+    }
+}
+
+class PhaseList: Object {
+    dynamic var list: List<Phase> = List<Phase>()
+
+    init(list: [Phase] = []) {
+        for item in list {
+            self.list.append(item)
+        }
+        super.init()
+    }
+    
+    required init() {
+//        fatalError("init() has not been implemented")
+    }
+}
+
+class Phase: Object {
+    
+    @objc dynamic var phaseNumber: Int = 0
+    @objc dynamic var consigne: String? = ""
+    @objc dynamic var phaseDuration: Int = 0
+    @objc dynamic var teacherRole: String? = ""
+    @objc dynamic var pupilRole: String? = ""
+    @objc dynamic var differenciation: String? = ""
+
+    init(phaseNumber: Int, consigne: String, phaseDuration: Int, teacherRole: String, pupilRole: String, differenciation: String) {
+        self.phaseNumber = phaseNumber
+        self.consigne = consigne
+        self.phaseDuration = phaseDuration
+        self.teacherRole = teacherRole
+        self.pupilRole = pupilRole
+        self.differenciation = differenciation
+    }
+    
+    required init() {
+//        fatalError("init() has not been implemented")
     }
 }
