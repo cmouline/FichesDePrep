@@ -12,7 +12,7 @@
 		843C39314082D90C4D016461 /* Pods_FichesDePrep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E662A4AF926CACF5925FA2 /* Pods_FichesDePrep.framework */; };
 		BF5991922519E97E00C1F439 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991912519E97E00C1F439 /* AppDelegate.swift */; };
 		BF5991942519E97E00C1F439 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991932519E97E00C1F439 /* SceneDelegate.swift */; };
-		BF5991962519E97E00C1F439 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991952519E97E00C1F439 /* FormViewController.swift */; };
+		BF5991962519E97E00C1F439 /* PrepFileFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991952519E97E00C1F439 /* PrepFileFormViewController.swift */; };
 		BF5991982519E97E00C1F439 /* PrepFileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991972519E97E00C1F439 /* PrepFileListViewController.swift */; };
 		BF59919B2519E97E00C1F439 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5991992519E97E00C1F439 /* Main.storyboard */; };
 		BF59919D2519E98000C1F439 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF59919C2519E98000C1F439 /* Assets.xcassets */; };
@@ -62,7 +62,7 @@
 		BF59918E2519E97E00C1F439 /* FichesDePrep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FichesDePrep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5991912519E97E00C1F439 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF5991932519E97E00C1F439 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BF5991952519E97E00C1F439 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
+		BF5991952519E97E00C1F439 /* PrepFileFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepFileFormViewController.swift; sourceTree = "<group>"; };
 		BF5991972519E97E00C1F439 /* PrepFileListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepFileListViewController.swift; sourceTree = "<group>"; };
 		BF59919A2519E97E00C1F439 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF59919C2519E98000C1F439 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -219,7 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				BF5991992519E97E00C1F439 /* Main.storyboard */,
-				BF5991952519E97E00C1F439 /* FormViewController.swift */,
+				BF5991952519E97E00C1F439 /* PrepFileFormViewController.swift */,
 				BF5991972519E97E00C1F439 /* PrepFileListViewController.swift */,
 				BF5991D9251B422A00C1F439 /* PDFPreviewViewController.swift */,
 				BF5991E0251B888E00C1F439 /* SettingsViewController.swift */,
@@ -510,7 +510,7 @@
 				BF5991DD251B452C00C1F439 /* RealmManager.swift in Sources */,
 				BF5991C42519F04000C1F439 /* TextViewTextCell.swift in Sources */,
 				BF5991E1251B888E00C1F439 /* SettingsViewController.swift in Sources */,
-				BF5991962519E97E00C1F439 /* FormViewController.swift in Sources */,
+				BF5991962519E97E00C1F439 /* PrepFileFormViewController.swift in Sources */,
 				BF5991DF251B874500C1F439 /* SettingCell.swift in Sources */,
 				BF5991922519E97E00C1F439 /* AppDelegate.swift in Sources */,
 				BF5991CE251A3C7C00C1F439 /* PDFGenerator.swift in Sources */,
@@ -622,7 +622,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -676,7 +676,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
