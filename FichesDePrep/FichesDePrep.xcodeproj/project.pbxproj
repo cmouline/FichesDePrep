@@ -32,7 +32,6 @@
 		BF5991DF251B874500C1F439 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991DE251B874500C1F439 /* SettingCell.swift */; };
 		BF5991E1251B888E00C1F439 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991E0251B888E00C1F439 /* SettingsViewController.swift */; };
 		BFC8F89F2535AF2000EFB73B /* Phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8F89E2535AF2000EFB73B /* Phase.swift */; };
-		BFC8F8B22535FB9F00EFB73B /* PhaseFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8F8B12535FB9F00EFB73B /* PhaseFormViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,7 +88,6 @@
 		BF5991DE251B874500C1F439 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		BF5991E0251B888E00C1F439 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BFC8F89E2535AF2000EFB73B /* Phase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phase.swift; sourceTree = "<group>"; };
-		BFC8F8B12535FB9F00EFB73B /* PhaseFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseFormViewController.swift; sourceTree = "<group>"; };
 		E5012170B2D711A32B07023A /* Pods_FichesDePrepTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FichesDePrepTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -227,7 +225,6 @@
 				BF5991972519E97E00C1F439 /* PrepFileListViewController.swift */,
 				BF5991D9251B422A00C1F439 /* PDFPreviewViewController.swift */,
 				BF5991E0251B888E00C1F439 /* SettingsViewController.swift */,
-				BFC8F8B12535FB9F00EFB73B /* PhaseFormViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -520,7 +517,6 @@
 				BF5991962519E97E00C1F439 /* PrepFileFormViewController.swift in Sources */,
 				BF5991DF251B874500C1F439 /* SettingCell.swift in Sources */,
 				BF5991922519E97E00C1F439 /* AppDelegate.swift in Sources */,
-				BFC8F8B22535FB9F00EFB73B /* PhaseFormViewController.swift in Sources */,
 				BF5991CE251A3C7C00C1F439 /* PDFGenerator.swift in Sources */,
 				BF5991C8251A059300C1F439 /* PickerCell.swift in Sources */,
 				BF5991942519E97E00C1F439 /* SceneDelegate.swift in Sources */,
