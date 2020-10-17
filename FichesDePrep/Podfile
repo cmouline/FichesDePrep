@@ -9,6 +9,7 @@ target 'FichesDePrep' do
   pod 'RealmSwift'
   pod 'IQKeyboardManagerSwift'
   pod 'Eureka'
+  pod 'BuyMeACoffee', '~> 1.0'
 
   target 'FichesDePrepTests' do
     inherit! :search_paths

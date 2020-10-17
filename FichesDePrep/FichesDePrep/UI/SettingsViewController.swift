@@ -8,6 +8,7 @@
 
 import UIKit
 import Eureka
+import BuyMeACoffee
 
 class SettingsViewController: FormViewController {
     
@@ -29,5 +30,8 @@ class SettingsViewController: FormViewController {
                 $0.placeholder = "1"
                 $0.tag = "cycle"
             }
+        
+        BMCManager.shared.presentingViewController = self
+        BMCManager.shared.thankYouMessage = "Merci du soutien, à moi la pizza ! 🍕🎉 Chloë"
     }
 }
