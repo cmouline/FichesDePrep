@@ -24,6 +24,7 @@
 		BF5991DA251B422A00C1F439 /* PDFPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991D9251B422A00C1F439 /* PDFPreviewViewController.swift */; };
 		BF5991DD251B452C00C1F439 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991DC251B452C00C1F439 /* RealmManager.swift */; };
 		BF5991E1251B888E00C1F439 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991E0251B888E00C1F439 /* SettingsViewController.swift */; };
+		BF7971B1253B9B7800E1ADB4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7971B0253B9B7800E1ADB4 /* Extensions.swift */; };
 		BFC8F89F2535AF2000EFB73B /* Phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8F89E2535AF2000EFB73B /* Phase.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		BF5991D9251B422A00C1F439 /* PDFPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewViewController.swift; sourceTree = "<group>"; };
 		BF5991DC251B452C00C1F439 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		BF5991E0251B888E00C1F439 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		BF7971B0253B9B7800E1ADB4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BFC8F89E2535AF2000EFB73B /* Phase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phase.swift; sourceTree = "<group>"; };
 		E5012170B2D711A32B07023A /* Pods_FichesDePrepTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FichesDePrepTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -146,7 +148,7 @@
 				BF59919E2519E98000C1F439 /* LaunchScreen.storyboard */,
 				BF5991912519E97E00C1F439 /* AppDelegate.swift */,
 				BF5991932519E97E00C1F439 /* SceneDelegate.swift */,
-				BF5991D3251A53C000C1F439 /* Common */,
+				BF7971AF253B9B6600E1ADB4 /* Common */,
 				BF5991D7251B3A5700C1F439 /* Core */,
 				BF5991D6251B3A3B00C1F439 /* UI */,
 				BF5991D5251B39EB00C1F439 /* Resources */,
@@ -170,13 +172,6 @@
 				BF5991B72519E98100C1F439 /* Info.plist */,
 			);
 			path = FichesDePrepUITests;
-			sourceTree = "<group>";
-		};
-		BF5991D3251A53C000C1F439 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 		BF5991D5251B39EB00C1F439 /* Resources */ = {
@@ -225,6 +220,14 @@
 				BF5991DC251B452C00C1F439 /* RealmManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		BF7971AF253B9B6600E1ADB4 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BF7971B0253B9B7800E1ADB4 /* Extensions.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		FD414CABC666301B4B2C2DF8 /* Frameworks */ = {
@@ -485,6 +488,7 @@
 				BF5991962519E97E00C1F439 /* PrepFileFormViewController.swift in Sources */,
 				BF5991922519E97E00C1F439 /* AppDelegate.swift in Sources */,
 				BF5991CE251A3C7C00C1F439 /* PDFGenerator.swift in Sources */,
+				BF7971B1253B9B7800E1ADB4 /* Extensions.swift in Sources */,
 				BF5991942519E97E00C1F439 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

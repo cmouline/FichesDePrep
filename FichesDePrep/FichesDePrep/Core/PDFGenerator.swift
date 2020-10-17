@@ -26,175 +26,250 @@ class PDFGenerator {
         format.documentInfo = pdfMetaData as [String: Any]
         
         let pageRect = CGRect(x: 0, y: 0, width: 11.75 * 72.0, height: 8.25 * 72.0)
-        let pageWidth = pageRect.width - 24
-        let pageHeight = pageRect.height - 24
+        let margin: CGFloat = 12.0
+        let pageWidth = pageRect.width - (margin * 2)
 
         let renderer = UIGraphicsPDFRenderer(bounds: pageRect, format: format)
         let data = renderer.pdfData { (context) in
             context.beginPage()
-            let domainBottom = addText(ofWidth: pageWidth, entitled: "Domaine d'activité: ", withText: prepFileData.activityKind)
-            let titleBottom = addText(ofWidth: pageWidth, entitled: "Titre: ", withText: prepFileData.title, under: domainBottom.0)
-            let seanceNumberBottom = addText(ofWidth: pageWidth / 2, entitled: "Séance nº: ", withText: "\(prepFileData.seanceNumber)", under: titleBottom.0)
-            let _ = addText(ofWidth: pageWidth, entitled: "Date: ", withText: "\(prepFileData.date)", under: titleBottom.0, next: seanceNumberBottom.1)
-            let levelBottom = addText(ofWidth: pageWidth / 2, entitled: "Niveau: ", withText: prepFileData.level, under: seanceNumberBottom.0)
-            let _ = addText(ofWidth: pageWidth, entitled: "Cycle: ", withText: "\(prepFileData.cycle)", under: seanceNumberBottom.0, next: levelBottom.1)
-            let durationBottom = addText(ofWidth: pageWidth, entitled: "Durée: ", withText: "\(prepFileData.duration)min", under: levelBottom.0)
-            let mainGoalBottom = addText(ofWidth: pageWidth, entitled: "Objectif général: ", withText: prepFileData.mainGoal, under: durationBottom.0 + 15)
-            let specificGoalBottom = addText(ofWidth: pageWidth, entitled: "Objectif spécifique: ", withText: prepFileData.specificGoal, under: mainGoalBottom.0)
-            let materialBottom = addText(ofWidth: pageWidth, entitled: "Matériel: ", withText: prepFileData.material, under: specificGoalBottom.0)
+            
+            
+            let domainPosition = addText(ofWidth: pageWidth,
+                                       entitled: "Domaine d'activité: ",
+                                       withText: prepFileData.activityKind)
+            let titlePosition = addText(ofWidth: pageWidth,
+                                      entitled: "Titre: ",
+                                      withText: prepFileData.title,
+                                      under: domainPosition.maxY)
+            let sessionNumberPosition = addText(ofWidth: pageWidth / 2,
+                                             entitled: "Séance nº: ",
+                                             withText: "\(prepFileData.seanceNumber)",
+                                             under: titlePosition.maxY)
+            let _ = addText(ofWidth: pageWidth,
+                            entitled: "Date: ",
+                            withText: "\(prepFileData.date)",
+                            under: titlePosition.maxY,
+                            next: sessionNumberPosition.maxX)
+            let levelPosition = addText(ofWidth: pageWidth / 2,
+                                      entitled: "Niveau: ",
+                                      withText: prepFileData.level,
+                                      under: sessionNumberPosition.maxY)
+            let _ = addText(ofWidth: pageWidth,
+                            entitled: "Cycle: ",
+                            withText: "\(prepFileData.cycle)",
+                            under: sessionNumberPosition.maxY,
+                            next: levelPosition.maxX)
+            let totalDurationPosition = addText(ofWidth: pageWidth,
+                                         entitled: "Durée: ",
+                                         withText: "\(prepFileData.duration)min",
+                                         under: levelPosition.maxY)
+            
+            
+            
+            let mainGoalPosition = addText(ofWidth: pageWidth,
+                                         entitled: "Objectif général: ",
+                                         withText: prepFileData.mainGoal,
+                                         under: totalDurationPosition.maxY + 15)
+            let specificGoalPosition = addText(ofWidth: pageWidth,
+                                             entitled: "Objectif spécifique: ",
+                                             withText: prepFileData.specificGoal,
+                                             under: mainGoalPosition.maxY)
+            let materialPosition = addText(ofWidth: pageWidth,
+                                         entitled: "Matériel: ",
+                                         withText: prepFileData.material,
+                                         under: specificGoalPosition.maxY)
 
-            let phasePosition = addText(ofWidth: pageWidth * 0.125, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Phase\n", withText: "", under: materialBottom.0 + 20)
-            let consignePosition = addText(ofWidth: pageWidth * 0.350, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Consigne\n", withText: prepFileData.phases?.list[0].consigne as! String, under: materialBottom.0 + 20, next: phasePosition.1 + 5)
-            let durationPosition = addText(ofWidth: pageWidth * 0.05, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Durée\n", withText: "\(prepFileData.phases?.list[0].phaseDuration) min", under: materialBottom.0 + 20, next: consignePosition.1 + 5)
-            let teacherRolePosition = addText(ofWidth: pageWidth * 0.175, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Rôle de l'enseignant\n", withText: prepFileData.phases?.list[0].teacherRole ?? "", under: materialBottom.0 + 20, next: durationPosition.1 + 5)
-            let pupilRolePosition = addText(ofWidth: pageWidth * 0.150, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Rôle de l'élève\n", withText: prepFileData.phases?.list[0].pupilRole ?? "", under: materialBottom.0 + 20, next: teacherRolePosition.1 + 5)
-            let _ = addText(ofWidth: pageWidth * 0.150, andHeight: pageRect.height - materialBottom.0 + 20, entitled: "Différenciation\n", withText: prepFileData.phases?.list[0].differenciation ?? "", under: materialBottom.0 + 20, next: pupilRolePosition.1)
+            
+            let bottomWidth = pageWidth - 25
+            var baseTopPosition = materialPosition.maxY + 10
+            var allPositions: [PositionData] = []
+            if let phase = prepFileData.phases {
+                let numberOfPhase = phase.list.count
+                for i in 0..<numberOfPhase {
+                    let phasePosition = addText(ofWidth: bottomWidth * 0.075,
+                                                entitled: i == 0 ? "Phase\n" : "\n",
+                                                withText: phase.list[i].phaseNumber.description,
+                                                under: baseTopPosition + 5)
+                    let consignePosition = addText(ofWidth: bottomWidth * 0.400,
+                                                   entitled: i == 0 ? "Consigne\n" : "\n",
+                                                   withText: phase.list[i].consigne ?? "",
+                                                   under: baseTopPosition + 5,
+                                                   next: phasePosition.maxX + 5)
+                    let phaseDurationPosition = addText(ofWidth: bottomWidth * 0.05,
+                                                   entitled: i == 0 ? "Durée\n" : "\n",
+                                                   withText: "\(phase.list[i].phaseDuration) min",
+                                                   under: baseTopPosition + 5,
+                                                   next: consignePosition.maxX + 5)
+                    let teacherRolePosition = addText(ofWidth: bottomWidth * 0.175,
+                                                      entitled: i == 0 ? "Rôle de l'enseignant\n" : "\n",
+                                                      withText: phase.list[i].teacherRole ?? "",
+                                                      under: baseTopPosition + 5,
+                                                      next: phaseDurationPosition.maxX + 5)
+                    let pupilRolePosition = addText(ofWidth: bottomWidth * 0.150,
+                                                    entitled: i == 0 ? "Rôle de l'élève\n" : "\n",
+                                                    withText: phase.list[i].pupilRole ?? "",
+                                                    under: baseTopPosition + 5,
+                                                    next: teacherRolePosition.maxX + 5)
+                    let differenciationPosition = addText(ofWidth: bottomWidth * 0.150,
+                                                          entitled: i == 0 ? "Différenciation\n" : "\n",
+                                                          withText: phase.list[i].differenciation ?? "",
+                                                          under: baseTopPosition + 5,
+                                                          next: pupilRolePosition.maxX + 5)
+                    baseTopPosition += [phasePosition.height, consignePosition.height, phaseDurationPosition.height, teacherRolePosition.height, pupilRolePosition.height, differenciationPosition.height].sorted().last!
+                    if i == numberOfPhase - 1 {
+                        allPositions.append(phasePosition)
+                        allPositions.append(consignePosition)
+                        allPositions.append(phaseDurationPosition)
+                        allPositions.append(teacherRolePosition)
+                        allPositions.append(pupilRolePosition)
+                        allPositions.append(differenciationPosition)
+                    }
+                }
+            }
+            
+            guard !allPositions.isEmpty else {
+                return
+            }
+            
+            // Draw frame
+            let topBorder: CGFloat = 10.0
+            let leftBorder: CGFloat = 10.0
+            let bottomBorder = pageRect.height - 10
+            let rightBorder = pageRect.width - 10
+            // Top section - Top line
+            drawLine(context.cgContext,
+                     startX: leftBorder,
+                     endX: rightBorder,
+                     startY: topBorder,
+                     endY: topBorder)
+            // Top section - Bottom line
+            drawLine(context.cgContext,
+                     startX: leftBorder,
+                     endX: rightBorder,
+                     startY: totalDurationPosition.maxY + 2,
+                     endY: totalDurationPosition.maxY + 2)
+            // Top section - Left line
+            drawLine(context.cgContext,
+                     startX: leftBorder,
+                     endX: leftBorder,
+                     startY: topBorder,
+                     endY: totalDurationPosition.maxY + 2)
+            // Top section - Right line
+            drawLine(context.cgContext,
+                     startX: rightBorder,
+                     endX: rightBorder,
+                     startY: topBorder,
+                     endY: totalDurationPosition.maxY + 2)
+
+            // Middle section - Top line
+            drawLine(context.cgContext,
+                     startX: leftBorder,
+                     endX: rightBorder,
+                     startY: totalDurationPosition.maxY + 13,
+                     endY: totalDurationPosition.maxY + 13)
+            // Middle section - Bottom line
+            drawLine(context.cgContext,
+                     startX: leftBorder,
+                     endX: rightBorder,
+                     startY: materialPosition.maxY + 2,
+                     endY: materialPosition.maxY + 2)
+            // Middle section - Left line
+            drawLine(context.cgContext,
+                     startX: leftBorder,
+                     endX: leftBorder,
+                     startY: totalDurationPosition.maxY + 13,
+                     endY: materialPosition.maxY + 2)
+            // Middle section - Right line
+            drawLine(context.cgContext,
+                     startX: rightBorder,
+                     endX: rightBorder,
+                     startY: totalDurationPosition.maxY + 13,
+                     endY: materialPosition.maxY + 2)
+
+            // Bottom section - Top line
+            drawLine(context.cgContext,
+                     startX: leftBorder,
+                     endX: rightBorder,
+                     startY: materialPosition.maxY + 13,
+                     endY: materialPosition.maxY + 13)
+            // Bottom section - Bottom line
+            drawLine(context.cgContext,
+                     startX: leftBorder,
+                     endX: rightBorder,
+                     startY: bottomBorder,
+                     endY: bottomBorder)
+            // Bottom section - Left line
+            drawLine(context.cgContext,
+                     startX: leftBorder,
+                     endX: leftBorder,
+                     startY: materialPosition.maxY + 13,
+                     endY: bottomBorder)
+            // Bottom section - Right line
+            drawLine(context.cgContext,
+                     startX: rightBorder,
+                     endX: rightBorder,
+                     startY: materialPosition.maxY + 13,
+                     endY: bottomBorder)
+            
+            // Bottom section - Intercolumn line
+            let topBottomSection = materialPosition.maxY + 13
+            for i in 0...4 {
+                drawLine(context.cgContext,
+                         startX: allPositions[i].maxX + 2,
+                         endX: allPositions[i].maxX + 2,
+                         startY: topBottomSection,
+                         endY: bottomBorder)
+            }
         }
-        
+
         return data
     }
     
-    func addText(ofWidth: CGFloat, andHeight: CGFloat? = nil, entitled: String, withText text: String, under bottomPosition: CGFloat = 12, next rightPosition: CGFloat = 12) -> (CGFloat, CGFloat) {
+    func addText(ofWidth: CGFloat, entitled: String, withText text: String, under bottomPosition: CGFloat = 12, next rightPosition: CGFloat = 12) -> PositionData {
+
         let textFont = UIFont.systemFont(ofSize: 12.0, weight: .regular)
         let boldFont = UIFont.systemFont(ofSize: 12.0, weight: .bold)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .left
+        paragraphStyle.lineBreakMode = .byWordWrapping
 
         let entitledAttributes: [NSAttributedString.Key: Any] =
-            [NSAttributedString.Key.font: boldFont]
+            [NSAttributedString.Key.font: boldFont,
+             NSAttributedString.Key.paragraphStyle: paragraphStyle]
         let entitledText = NSMutableAttributedString(string: entitled, attributes: entitledAttributes)
 
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .justified
-        paragraphStyle.lineBreakMode = .byWordWrapping
         let textAttributes: [NSAttributedString.Key: Any] =
             [NSAttributedString.Key.font: textFont,
              NSAttributedString.Key.paragraphStyle: paragraphStyle]
         let attributedText = NSMutableAttributedString(string: text, attributes: textAttributes)
         
         entitledText.append(attributedText)
-        let textStringSize = entitledText.size()
+        let textStringSize = entitledText.string.size(withAttributes: textAttributes, width: ofWidth)
         let textStringRect = CGRect(x: rightPosition,
                                     y: bottomPosition,
                                     width: ofWidth,
-                                    height: andHeight == nil ? textStringSize.height : andHeight!)
+                                    height: textStringSize.height)
         
         entitledText.draw(in: textStringRect)
-        return (textStringRect.origin.y + textStringRect.size.height, textStringRect.origin.x + textStringRect.size.width)
+        return PositionData(maxX: textStringRect.origin.x + textStringRect.size.width, maxY: textStringRect.origin.y + textStringRect.size.height, height: textStringSize.height)
     }
+    
+    func drawLine(_ drawContext: CGContext, startX: CGFloat, endX: CGFloat, startY: CGFloat, endY: CGFloat) {
+        
+        drawContext.saveGState()
+        drawContext.setLineWidth(1.0)
 
-    
-    // ---------------------------------------------
-    
-//    func addTitle(pageRect: CGRect) -> CGFloat {
-//        // 1
-//        let titleFont = UIFont.systemFont(ofSize: 18.0, weight: .bold)
-//        // 2
-//        let titleAttributes: [NSAttributedString.Key: Any] =
-//            [NSAttributedString.Key.font: titleFont]
-//        let attributedTitle = NSAttributedString(string: prepFileData.title, attributes: titleAttributes)
-//        // 3
-//        let titleStringSize = attributedTitle.size()
-//        // 4
-//        let titleStringRect = CGRect(x: (pageRect.width - titleStringSize.width) / 2.0,
-//                                     y: 36, width: titleStringSize.width,
-//                                     height: titleStringSize.height)
-//        // 5
-//        attributedTitle.draw(in: titleStringRect)
-//        // 6
-//        return titleStringRect.origin.y + titleStringRect.size.height
-//    }
-//
-//    func addBodyText(pageRect: CGRect, textTop: CGFloat) {
-//        // 1
-//        let textFont = UIFont.systemFont(ofSize: 12.0, weight: .regular)
-//        // 2
-//        let paragraphStyle = NSMutableParagraphStyle()
-//        paragraphStyle.alignment = .natural
-//        paragraphStyle.lineBreakMode = .byWordWrapping
-//        // 3
-//        let textAttributes = [
-//            NSAttributedString.Key.paragraphStyle: paragraphStyle,
-//            NSAttributedString.Key.font: textFont
-//        ]
-//        let attributedText = NSAttributedString(string: body, attributes: textAttributes)
-//        // 4
-//        let textRect = CGRect(x: 10, y: textTop, width: pageRect.width - 20,
-//                              height: pageRect.height - textTop - pageRect.height / 5.0)
-//        attributedText.draw(in: textRect)
-//    }
-//
-//    func addImage(pageRect: CGRect, imageTop: CGFloat) -> CGFloat {
-//        // 1
-//        let maxHeight = pageRect.height * 0.4
-//        let maxWidth = pageRect.width * 0.8
-//        // 2
-//        let aspectWidth = maxWidth / image.size.width
-//        let aspectHeight = maxHeight / image.size.height
-//        let aspectRatio = min(aspectWidth, aspectHeight)
-//        // 3
-//        let scaledWidth = image.size.width * aspectRatio
-//        let scaledHeight = image.size.height * aspectRatio
-//        // 4
-//        let imageX = (pageRect.width - scaledWidth) / 2.0
-//        let imageRect = CGRect(x: imageX, y: imageTop,
-//                               width: scaledWidth, height: scaledHeight)
-//        // 5
-//        image.draw(in: imageRect)
-//        return imageRect.origin.y + imageRect.size.height
-//    }
-//
-//    // 1
-//    func drawTearOffs(_ drawContext: CGContext, pageRect: CGRect,
-//                      tearOffY: CGFloat, numberTabs: Int) {
-//        // 2
-//        drawContext.saveGState()
-//        drawContext.setLineWidth(2.0)
-//
-//        // 3
-//        drawContext.move(to: CGPoint(x: 0, y: tearOffY))
-//        drawContext.addLine(to: CGPoint(x: pageRect.width, y: tearOffY))
-//        drawContext.strokePath()
-//        drawContext.restoreGState()
-//
-//        // 4
-//        drawContext.saveGState()
-//        let dashLength = CGFloat(72.0 * 0.2)
-//        drawContext.setLineDash(phase: 0, lengths: [dashLength, dashLength])
-//        // 5
-//        let tabWidth = pageRect.width / CGFloat(numberTabs)
-//        for tearOffIndex in 1..<numberTabs {
-//            // 6
-//            let tabX = CGFloat(tearOffIndex) * tabWidth
-//            drawContext.move(to: CGPoint(x: tabX, y: tearOffY))
-//            drawContext.addLine(to: CGPoint(x: tabX, y: pageRect.height))
-//            drawContext.strokePath()
-//        }
-//        // 7
-//        drawContext.restoreGState()
-//    }
-//
-//    func drawContactLabels(_ drawContext: CGContext, pageRect: CGRect, numberTabs: Int) {
-//        let contactTextFont = UIFont.systemFont(ofSize: 10.0, weight: .regular)
-//        let paragraphStyle = NSMutableParagraphStyle()
-//        paragraphStyle.alignment = .natural
-//        paragraphStyle.lineBreakMode = .byWordWrapping
-//        let contactBlurbAttributes = [
-//            NSAttributedString.Key.paragraphStyle: paragraphStyle,
-//            NSAttributedString.Key.font: contactTextFont
-//        ]
-//        let attributedContactText = NSMutableAttributedString(string: contactInfo, attributes: contactBlurbAttributes)
-//        // 1
-//        let textHeight = attributedContactText.size().height
-//        let tabWidth = pageRect.width / CGFloat(numberTabs)
-//        let horizontalOffset = (tabWidth - textHeight) / 2.0
-//        drawContext.saveGState()
-//        // 2
-//        drawContext.rotate(by: -90.0 * CGFloat.pi / 180.0)
-//        for tearOffIndex in 0...numberTabs {
-//            let tabX = CGFloat(tearOffIndex) * tabWidth + horizontalOffset
-//            // 3
-//            attributedContactText.draw(at: CGPoint(x: -pageRect.height + 5.0, y: tabX))
-//        }
-//        drawContext.restoreGState()
-//    }
-//
+        drawContext.move(to: CGPoint(x: startX, y: startY))
+        drawContext.addLine(to: CGPoint(x: endX, y: endY))
+        drawContext.strokePath()
+        drawContext.restoreGState()
+        
+        drawContext.saveGState()
+    }
+}
+
+struct PositionData {
+    let maxX: CGFloat
+    let maxY: CGFloat
+    let height: CGFloat
 }

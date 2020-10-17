@@ -178,20 +178,14 @@ class PrepFileFormViewController: FormViewController {
         var phases: [Phase] = []
         let values = self.form.values()
         for index in 1...numberOfPhase {
-            if let consigne = values["consigne-\(index)"] as? String,
-               let phaseDuration = values["phaseDuration-\(index)"] as? Int,
-               let teacherRole = values["teacherRole-\(index)"] as? String,
-               let pupilRole = values["pupilRole-\(index)"] as? String,
-               let differenciation = values["differenciation-\(index)"] as? String {
-                phases.append(Phase(
-                                phaseNumber: index,
-                                consigne: consigne,
-                                phaseDuration: phaseDuration,
-                                teacherRole: teacherRole,
-                                pupilRole: pupilRole,
-                                differenciation: differenciation)
-                )
-            }
+            phases.append(Phase(
+                            phaseNumber: index,
+                            consigne: values["consigne-\(index)"] as? String,
+                            phaseDuration: values["phaseDuration-\(index)"] as? Int,
+                            teacherRole: values["teacherRole-\(index)"] as? String,
+                            pupilRole: values["pupilRole-\(index)"] as? String,
+                            differenciation: values["differenciation-\(index)"] as? String)
+            )
         }
         return phases
     }
