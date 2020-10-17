@@ -33,11 +33,11 @@ class Phase: Object {
     @objc dynamic var pupilRole: String? = ""
     @objc dynamic var differenciation: String? = ""
 
-    convenience init(phaseNumber: Int, consigne: String, phaseDuration: Int, teacherRole: String, pupilRole: String, differenciation: String) {
+    convenience init(phaseNumber: Int?, consigne: String?, phaseDuration: Int?, teacherRole: String?, pupilRole: String?, differenciation: String?) {
         self.init()
-        self.phaseNumber = phaseNumber
+        self.phaseNumber = phaseNumber ?? 0
         self.consigne = consigne
-        self.phaseDuration = phaseDuration
+        self.phaseDuration = phaseDuration ?? 0
         self.teacherRole = teacherRole
         self.pupilRole = pupilRole
         self.differenciation = differenciation
