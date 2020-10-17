@@ -29,6 +29,15 @@ class PrepFileListViewController: UIViewController {
         draftPrepFiles = prepFiles.filter({ $0.isDraft })
         tableView.reloadData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showPDFPreview" {
+            let pdfPreviewVC = segue.destination as! PDFPreviewViewController
+            let prepFile = sender as! PrepFile
+            let generator = PDFGenerator(prepFile: prepFile)
+            pdfPreviewVC.documentData = generator.createPDF()            
+        }
+    }
 }
 
 extension PrepFileListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -53,9 +62,6 @@ extension PrepFileListViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let dataSource = indexPath.section == 0 ? completePrepFiles : draftPrepFiles
 
-        let generator = PDFGenerator(prepFile: dataSource[indexPath.row])
-        let previewVC = PDFPreviewViewController()
-        previewVC.documentData = generator.createPDF()
-        self.present(previewVC, animated: true, completion: nil)
+        performSegue(withIdentifier: "showPDFPreview", sender: dataSource[indexPath.row])
     }
 }

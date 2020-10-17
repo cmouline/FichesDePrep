@@ -115,11 +115,57 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="tableView" destination="5hv-XV-mXd" id="GVy-f9-RZe"/>
+                        <segue destination="M4p-An-xeZ" kind="show" identifier="showPDFPreview" id="fAV-qe-X17"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="749" y="360"/>
+        </scene>
+        <!--Preview View Controller-->
+        <scene sceneID="ox1-7B-cfs">
+            <objects>
+                <viewController id="M4p-An-xeZ" customClass="PDFPreviewViewController" customModule="FichesDePrep" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F6k-FM-MGA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGp-S7-dhO" customClass="PDFView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="meZ-G7-CgF">
+                                <rect key="frame" x="0.0" y="759" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem title="Partager" id="1rB-Do-rRk">
+                                        <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="default" renderingMode="template"/>
+                                        <connections>
+                                            <action selector="shareAction:" destination="M4p-An-xeZ" id="6f6-Cn-eUM"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="AGe-vc-YMu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="meZ-G7-CgF" firstAttribute="bottom" secondItem="AGe-vc-YMu" secondAttribute="bottom" id="6zl-0p-mdl"/>
+                            <constraint firstItem="meZ-G7-CgF" firstAttribute="trailing" secondItem="AGe-vc-YMu" secondAttribute="trailing" id="OmI-12-3Cp"/>
+                            <constraint firstItem="HGp-S7-dhO" firstAttribute="top" secondItem="AGe-vc-YMu" secondAttribute="top" id="cdl-G9-OPl"/>
+                            <constraint firstItem="AGe-vc-YMu" firstAttribute="trailing" secondItem="HGp-S7-dhO" secondAttribute="trailing" id="eXf-3S-dbJ"/>
+                            <constraint firstItem="AGe-vc-YMu" firstAttribute="bottom" secondItem="HGp-S7-dhO" secondAttribute="bottom" id="iYf-RG-xcC"/>
+                            <constraint firstItem="HGp-S7-dhO" firstAttribute="leading" secondItem="AGe-vc-YMu" secondAttribute="leading" id="ihy-hL-j5D"/>
+                            <constraint firstItem="meZ-G7-CgF" firstAttribute="leading" secondItem="AGe-vc-YMu" secondAttribute="leading" id="sXC-vs-xvG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cZZ-V4-Wfp"/>
+                    <connections>
+                        <outlet property="pdfView" destination="HGp-S7-dhO" id="tge-bk-pQn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cd0-IF-kZx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1640.5797101449277" y="359.59821428571428"/>
         </scene>
         <!--Préférences-->
         <scene sceneID="KfS-W4-pDV">
@@ -200,6 +246,7 @@
         <image name="doc.on.doc" catalog="system" width="116" height="128"/>
         <image name="doc.plaintext" catalog="system" width="115" height="128"/>
         <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="tray.fill" catalog="system" width="128" height="88"/>
         <image name="xmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">

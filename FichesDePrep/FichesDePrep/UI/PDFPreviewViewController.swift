@@ -9,24 +9,27 @@
 import PDFKit
 
 class PDFPreviewViewController: UIViewController {
+    
+    @IBOutlet weak var pdfView: PDFView!
+    
     public var documentData: Data?
-    var pdfView: PDFView = PDFView()
+    private var pdfDoc: PDFDocument?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pdfView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(pdfView)
-        NSLayoutConstraint.activate([
-            pdfView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            pdfView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
-            pdfView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            pdfView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-        ])
-        
         if let data = documentData {
-            pdfView.document = PDFDocument(data: data)
+            pdfDoc = PDFDocument(data: data)
+            pdfView.document = pdfDoc
             pdfView.autoScales = true
         }
+    }
+    
+    @IBAction func shareAction(_ sender: Any) {
+        let activityViewController =
+            UIActivityViewController(activityItems: [documentData],
+                                     applicationActivities: [])
+
+        present(activityViewController, animated: true)
     }
 }
