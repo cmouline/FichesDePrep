@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import IQKeyboardManagerSwift
+import BuyMeACoffee
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         IQKeyboardManager.shared.enable = true
+        BMCManager.shared.configure(username: "cmoulinet")
         return true
     }
 

@@ -136,18 +136,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="0K2-uE-1XN">
-                                <rect key="frame" x="0.0" y="122.5" width="414" height="690.5"/>
+                                <rect key="frame" x="0.0" y="122.5" width="414" height="628.5"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7T4-Vl-5rW" customClass="BMCButton" customModule="BuyMeACoffee">
+                                <rect key="frame" x="16" y="767" width="382" height="30"/>
+                                <state key="normal" title="Buy me a pizza"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SWp-Gb-pmL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="7T4-Vl-5rW" firstAttribute="top" secondItem="0K2-uE-1XN" secondAttribute="bottom" constant="16" id="6G8-nW-Dpw"/>
+                            <constraint firstItem="SWp-Gb-pmL" firstAttribute="bottom" secondItem="7T4-Vl-5rW" secondAttribute="bottom" constant="16" id="Czf-IL-mSU"/>
+                            <constraint firstItem="7T4-Vl-5rW" firstAttribute="leading" secondItem="SWp-Gb-pmL" secondAttribute="leading" constant="16" id="LDG-Pe-5Dq"/>
                             <constraint firstItem="SWp-Gb-pmL" firstAttribute="top" secondItem="VYn-gG-SEZ" secondAttribute="top" constant="-16" id="N78-zv-8Us"/>
                             <constraint firstItem="0K2-uE-1XN" firstAttribute="trailing" secondItem="SWp-Gb-pmL" secondAttribute="trailing" id="U3C-Kg-uwP"/>
                             <constraint firstItem="0K2-uE-1XN" firstAttribute="top" secondItem="VYn-gG-SEZ" secondAttribute="bottom" constant="32" id="ehA-h3-GKA"/>
+                            <constraint firstItem="SWp-Gb-pmL" firstAttribute="trailing" secondItem="7T4-Vl-5rW" secondAttribute="trailing" constant="16" id="gG0-df-m8x"/>
                             <constraint firstItem="VYn-gG-SEZ" firstAttribute="leading" secondItem="SWp-Gb-pmL" secondAttribute="leading" constant="16" id="qnu-qr-bno"/>
                             <constraint firstItem="0K2-uE-1XN" firstAttribute="leading" secondItem="SWp-Gb-pmL" secondAttribute="leading" id="r2s-Pt-6xv"/>
-                            <constraint firstItem="0K2-uE-1XN" firstAttribute="bottom" secondItem="SWp-Gb-pmL" secondAttribute="bottom" id="wfh-LY-Nop"/>
                             <constraint firstItem="VYn-gG-SEZ" firstAttribute="trailing" secondItem="SWp-Gb-pmL" secondAttribute="trailing" constant="-16" id="zJj-H5-yUK"/>
                         </constraints>
                     </view>
@@ -184,6 +191,11 @@
             <point key="canvasLocation" x="-55" y="360"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="7T4-Vl-5rW">
+            <size key="intrinsicContentSize" width="104" height="30"/>
+        </designable>
+    </designables>
     <resources>
         <image name="doc.on.doc" catalog="system" width="116" height="128"/>
         <image name="doc.plaintext" catalog="system" width="115" height="128"/>
