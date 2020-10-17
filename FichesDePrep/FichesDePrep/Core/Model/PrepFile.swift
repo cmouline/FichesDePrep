@@ -26,7 +26,7 @@ class PrepFile: Object {
     @objc dynamic var specificGoal: String = ""
     @objc dynamic var material: String = ""
     
-//    @objc dynamic var phases: PhaseList? = PhaseList(list: [])
+    @objc dynamic var phases: PhaseList? = PhaseList(list: [])
     
     @objc dynamic var isDraft: Bool = true
     
@@ -62,7 +62,7 @@ class PrepFile: Object {
         if let mt = material {
             self.material = mt
         }
-//        self.phases = PhaseList(list: phases)
+        self.phases = PhaseList(list: phases)
         self.isDraft = isDraft
     }
     
