@@ -19,17 +19,10 @@
 		BF5991A02519E98000C1F439 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF59919E2519E98000C1F439 /* LaunchScreen.storyboard */; };
 		BF5991AB2519E98100C1F439 /* FichesDePrepTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991AA2519E98100C1F439 /* FichesDePrepTests.swift */; };
 		BF5991B62519E98100C1F439 /* FichesDePrepUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991B52519E98100C1F439 /* FichesDePrepUITests.swift */; };
-		BF5991C42519F04000C1F439 /* TextViewTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991C32519F04000C1F439 /* TextViewTextCell.swift */; };
-		BF5991C6251A010000C1F439 /* TextViewNumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991C5251A010000C1F439 /* TextViewNumCell.swift */; };
-		BF5991C8251A059300C1F439 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991C7251A059300C1F439 /* PickerCell.swift */; };
-		BF5991CA251A25A400C1F439 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991C9251A25A400C1F439 /* ButtonCell.swift */; };
 		BF5991CC251A304100C1F439 /* PrepFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991CB251A304100C1F439 /* PrepFile.swift */; };
 		BF5991CE251A3C7C00C1F439 /* PDFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991CD251A3C7C00C1F439 /* PDFGenerator.swift */; };
-		BF5991D0251A534100C1F439 /* CommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991CF251A534100C1F439 /* CommonCell.swift */; };
-		BF5991D2251A536600C1F439 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991D1251A536600C1F439 /* DatePickerCell.swift */; };
 		BF5991DA251B422A00C1F439 /* PDFPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991D9251B422A00C1F439 /* PDFPreviewViewController.swift */; };
 		BF5991DD251B452C00C1F439 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991DC251B452C00C1F439 /* RealmManager.swift */; };
-		BF5991DF251B874500C1F439 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991DE251B874500C1F439 /* SettingCell.swift */; };
 		BF5991E1251B888E00C1F439 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991E0251B888E00C1F439 /* SettingsViewController.swift */; };
 		BFC8F89F2535AF2000EFB73B /* Phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8F89E2535AF2000EFB73B /* Phase.swift */; };
 /* End PBXBuildFile section */
@@ -75,17 +68,10 @@
 		BF5991B12519E98100C1F439 /* FichesDePrepUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FichesDePrepUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5991B52519E98100C1F439 /* FichesDePrepUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FichesDePrepUITests.swift; sourceTree = "<group>"; };
 		BF5991B72519E98100C1F439 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF5991C32519F04000C1F439 /* TextViewTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTextCell.swift; sourceTree = "<group>"; };
-		BF5991C5251A010000C1F439 /* TextViewNumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewNumCell.swift; sourceTree = "<group>"; };
-		BF5991C7251A059300C1F439 /* PickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
-		BF5991C9251A25A400C1F439 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		BF5991CB251A304100C1F439 /* PrepFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepFile.swift; sourceTree = "<group>"; };
 		BF5991CD251A3C7C00C1F439 /* PDFGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFGenerator.swift; sourceTree = "<group>"; };
-		BF5991CF251A534100C1F439 /* CommonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCell.swift; sourceTree = "<group>"; };
-		BF5991D1251A536600C1F439 /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
 		BF5991D9251B422A00C1F439 /* PDFPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewViewController.swift; sourceTree = "<group>"; };
 		BF5991DC251B452C00C1F439 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
-		BF5991DE251B874500C1F439 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		BF5991E0251B888E00C1F439 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BFC8F89E2535AF2000EFB73B /* Phase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phase.swift; sourceTree = "<group>"; };
 		E5012170B2D711A32B07023A /* Pods_FichesDePrepTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FichesDePrepTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,23 +175,8 @@
 		BF5991D3251A53C000C1F439 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				BF5991D4251A53DF00C1F439 /* Cell */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		BF5991D4251A53DF00C1F439 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				BF5991C9251A25A400C1F439 /* ButtonCell.swift */,
-				BF5991CF251A534100C1F439 /* CommonCell.swift */,
-				BF5991D1251A536600C1F439 /* DatePickerCell.swift */,
-				BF5991C7251A059300C1F439 /* PickerCell.swift */,
-				BF5991C5251A010000C1F439 /* TextViewNumCell.swift */,
-				BF5991C32519F04000C1F439 /* TextViewTextCell.swift */,
-				BF5991DE251B874500C1F439 /* SettingCell.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		BF5991D5251B39EB00C1F439 /* Resources */ = {
@@ -506,22 +477,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF5991DA251B422A00C1F439 /* PDFPreviewViewController.swift in Sources */,
-				BF5991C6251A010000C1F439 /* TextViewNumCell.swift in Sources */,
 				BF5991CC251A304100C1F439 /* PrepFile.swift in Sources */,
 				BF5991982519E97E00C1F439 /* PrepFileListViewController.swift in Sources */,
-				BF5991D0251A534100C1F439 /* CommonCell.swift in Sources */,
 				BF5991DD251B452C00C1F439 /* RealmManager.swift in Sources */,
 				BFC8F89F2535AF2000EFB73B /* Phase.swift in Sources */,
-				BF5991C42519F04000C1F439 /* TextViewTextCell.swift in Sources */,
 				BF5991E1251B888E00C1F439 /* SettingsViewController.swift in Sources */,
 				BF5991962519E97E00C1F439 /* PrepFileFormViewController.swift in Sources */,
-				BF5991DF251B874500C1F439 /* SettingCell.swift in Sources */,
 				BF5991922519E97E00C1F439 /* AppDelegate.swift in Sources */,
 				BF5991CE251A3C7C00C1F439 /* PDFGenerator.swift in Sources */,
-				BF5991C8251A059300C1F439 /* PickerCell.swift in Sources */,
 				BF5991942519E97E00C1F439 /* SceneDelegate.swift in Sources */,
-				BF5991CA251A25A400C1F439 /* ButtonCell.swift in Sources */,
-				BF5991D2251A536600C1F439 /* DatePickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

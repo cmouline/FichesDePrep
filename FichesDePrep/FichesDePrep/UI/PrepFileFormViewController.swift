@@ -196,11 +196,3 @@ class PrepFileFormViewController: FormViewController {
         return phases
     }
 }
-
-enum CellType {
-    case textViewText
-    case textViewNum
-    case picker
-    case datePicker
-    case button
-}
