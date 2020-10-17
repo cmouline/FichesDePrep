@@ -10,6 +10,7 @@
 		00A95AB7B85306507568B315 /* Pods_FichesDePrep_FichesDePrepUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B17A4A8EB6843DA9676222B4 /* Pods_FichesDePrep_FichesDePrepUITests.framework */; };
 		6A8F4BF9D01D02E430480830 /* Pods_FichesDePrepTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5012170B2D711A32B07023A /* Pods_FichesDePrepTests.framework */; };
 		843C39314082D90C4D016461 /* Pods_FichesDePrep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E662A4AF926CACF5925FA2 /* Pods_FichesDePrep.framework */; };
+		92E4C22A253BB4F00050A68B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E4C229253BB4F00050A68B /* Util.swift */; };
 		BF5991922519E97E00C1F439 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991912519E97E00C1F439 /* AppDelegate.swift */; };
 		BF5991942519E97E00C1F439 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991932519E97E00C1F439 /* SceneDelegate.swift */; };
 		BF5991962519E97E00C1F439 /* PrepFileFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991952519E97E00C1F439 /* PrepFileFormViewController.swift */; };
@@ -51,6 +52,7 @@
 		47DCA500FF575E5E5F47C6BC /* Pods-FichesDePrepTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FichesDePrepTests.debug.xcconfig"; path = "Target Support Files/Pods-FichesDePrepTests/Pods-FichesDePrepTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4DB20D1226A6958F6DD088CF /* Pods-FichesDePrep.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FichesDePrep.debug.xcconfig"; path = "Target Support Files/Pods-FichesDePrep/Pods-FichesDePrep.debug.xcconfig"; sourceTree = "<group>"; };
 		7ED87B214BD3F46D5A79EB3D /* Pods-FichesDePrepTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FichesDePrepTests.release.xcconfig"; path = "Target Support Files/Pods-FichesDePrepTests/Pods-FichesDePrepTests.release.xcconfig"; sourceTree = "<group>"; };
+		92E4C229253BB4F00050A68B /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		A6E662A4AF926CACF5925FA2 /* Pods_FichesDePrep.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FichesDePrep.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9431DD72F0810511F329372 /* Pods-FichesDePrep.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FichesDePrep.release.xcconfig"; path = "Target Support Files/Pods-FichesDePrep/Pods-FichesDePrep.release.xcconfig"; sourceTree = "<group>"; };
 		B17A4A8EB6843DA9676222B4 /* Pods_FichesDePrep_FichesDePrepUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FichesDePrep_FichesDePrepUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				BF7971B0253B9B7800E1ADB4 /* Extensions.swift */,
+				92E4C229253BB4F00050A68B /* Util.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				BFC8F89F2535AF2000EFB73B /* Phase.swift in Sources */,
 				BF5991E1251B888E00C1F439 /* SettingsViewController.swift in Sources */,
 				BF5991962519E97E00C1F439 /* PrepFileFormViewController.swift in Sources */,
+				92E4C22A253BB4F00050A68B /* Util.swift in Sources */,
 				BF5991922519E97E00C1F439 /* AppDelegate.swift in Sources */,
 				BF5991CE251A3C7C00C1F439 /* PDFGenerator.swift in Sources */,
 				BF7971B1253B9B7800E1ADB4 /* Extensions.swift in Sources */,

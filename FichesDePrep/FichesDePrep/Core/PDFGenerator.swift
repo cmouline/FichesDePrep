@@ -47,7 +47,7 @@ class PDFGenerator {
                                              under: titlePosition.maxY)
             let _ = addText(ofWidth: pageWidth,
                             entitled: "Date: ",
-                            withText: "\(prepFileData.date)",
+                            withText: Util.formatDate(prepFileData.date),
                             under: titlePosition.maxY,
                             next: sessionNumberPosition.maxX)
             let levelPosition = addText(ofWidth: pageWidth / 2,
