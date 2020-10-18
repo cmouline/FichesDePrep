@@ -26,6 +26,7 @@
 		BF5991DD251B452C00C1F439 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991DC251B452C00C1F439 /* RealmManager.swift */; };
 		BF5991E1251B888E00C1F439 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991E0251B888E00C1F439 /* SettingsViewController.swift */; };
 		BF7971B1253B9B7800E1ADB4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7971B0253B9B7800E1ADB4 /* Extensions.swift */; };
+		BF7971FB253C2D0800E1ADB4 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7971FA253C2D0800E1ADB4 /* Preferences.swift */; };
 		BFC8F89F2535AF2000EFB73B /* Phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8F89E2535AF2000EFB73B /* Phase.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		BF5991DC251B452C00C1F439 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		BF5991E0251B888E00C1F439 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BF7971B0253B9B7800E1ADB4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		BF7971FA253C2D0800E1ADB4 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		BFC8F89E2535AF2000EFB73B /* Phase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phase.swift; sourceTree = "<group>"; };
 		E5012170B2D711A32B07023A /* Pods_FichesDePrepTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FichesDePrepTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -212,6 +214,7 @@
 			children = (
 				BF5991CB251A304100C1F439 /* PrepFile.swift */,
 				BFC8F89E2535AF2000EFB73B /* Phase.swift */,
+				BF7971FA253C2D0800E1ADB4 /* Preferences.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				BF5991962519E97E00C1F439 /* PrepFileFormViewController.swift in Sources */,
 				92E4C22A253BB4F00050A68B /* Util.swift in Sources */,
 				BF5991922519E97E00C1F439 /* AppDelegate.swift in Sources */,
+				BF7971FB253C2D0800E1ADB4 /* Preferences.swift in Sources */,
 				BF5991CE251A3C7C00C1F439 /* PDFGenerator.swift in Sources */,
 				BF7971B1253B9B7800E1ADB4 /* Extensions.swift in Sources */,
 				BF5991942519E97E00C1F439 /* SceneDelegate.swift in Sources */,

@@ -137,6 +137,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="meZ-G7-CgF">
                                 <rect key="frame" x="0.0" y="759" width="414" height="49"/>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="o9L-Uk-3QC"/>
                                     <barButtonItem title="Partager" id="1rB-Do-rRk">
                                         <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="default" renderingMode="template"/>
                                         <connections>
