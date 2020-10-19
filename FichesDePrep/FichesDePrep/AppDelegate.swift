@@ -19,6 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         IQKeyboardManager.shared.enable = true
         BMCManager.shared.configure(username: "cmoulinet")
+        if RealmManager.shared.objects(Preferences.self).isEmpty {
+            RealmManager.shared.write {
+                RealmManager.shared.add(Preferences())
+            }
+        }
         return true
     }
 

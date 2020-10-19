@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 import Eureka
 
 class PrepFileFormViewController: FormViewController {
     
     var levels: [String] = ["PS", "MS", "GS", "CP", "CE1", "CE2", "CM1", "CM2"]
+    lazy var preferences: Results<Preferences> = { RealmManager.shared.objects(Preferences.self) }()
     var numberOfPhase = 1
     
     override func viewDidLoad() {
@@ -39,8 +41,12 @@ class PrepFileFormViewController: FormViewController {
             <<< PickerInputRow<String>() {
                 $0.title = "Niveau"
                 $0.options = levels
-                $0.value = $0.options.first
                 $0.tag = "level"
+                if preferences.count > 0, let preferedLevel = preferences[0].level {
+                    $0.value = preferedLevel
+                } else {
+                    $0.value = $0.options.first
+                }
             }
             <<< IntRow() {
                 $0.title = "Durée (en min)"

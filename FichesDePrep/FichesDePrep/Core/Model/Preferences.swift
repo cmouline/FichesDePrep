@@ -12,5 +12,9 @@ import RealmSwift
 class Preferences: Object {
     
     @objc dynamic var level: String?
-    @objc dynamic var cycle: Int = 0
+    @objc dynamic var cycle: Int = 1
+    
+    required init() {
+//        fatalError("init() has not been implemented")
+    }
 }
