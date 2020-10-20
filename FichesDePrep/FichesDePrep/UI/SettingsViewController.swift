@@ -13,7 +13,6 @@ import RealmSwift
 
 class SettingsViewController: FormViewController {
     
-    var levels: [String] = ["PS", "MS", "GS", "CP", "CE1", "CE2", "CM1", "CM2"]
     lazy var preferences: Results<Preferences> = { RealmManager.shared.objects(Preferences.self) }()
 
     override func viewDidLoad() {
@@ -23,8 +22,8 @@ class SettingsViewController: FormViewController {
         +++ Section()
             <<< PickerInputRow<String>() {
                 $0.title = "Niveau"
-                $0.options = levels
-                $0.value = preferences[0].level ?? levels[0]
+                $0.options = Const.levels
+                $0.value = preferences[0].level ?? Const.levels[0]
                 $0.tag = "level"
             }.onRowValidationChanged({ cell, row in
                 self.savePreferences(for: row.tag, row.value as Any)

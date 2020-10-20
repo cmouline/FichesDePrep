@@ -27,6 +27,7 @@
 		BF5991E1251B888E00C1F439 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991E0251B888E00C1F439 /* SettingsViewController.swift */; };
 		BF7971B1253B9B7800E1ADB4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7971B0253B9B7800E1ADB4 /* Extensions.swift */; };
 		BF7971FB253C2D0800E1ADB4 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7971FA253C2D0800E1ADB4 /* Preferences.swift */; };
+		BF989E0A253F3C7500D744EE /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF989E09253F3C7500D744EE /* Const.swift */; };
 		BFC8F89F2535AF2000EFB73B /* Phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8F89E2535AF2000EFB73B /* Phase.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		BF5991E0251B888E00C1F439 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BF7971B0253B9B7800E1ADB4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BF7971FA253C2D0800E1ADB4 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		BF989E09253F3C7500D744EE /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		BFC8F89E2535AF2000EFB73B /* Phase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phase.swift; sourceTree = "<group>"; };
 		E5012170B2D711A32B07023A /* Pods_FichesDePrepTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FichesDePrepTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -232,6 +234,7 @@
 			children = (
 				BF7971B0253B9B7800E1ADB4 /* Extensions.swift */,
 				92E4C229253BB4F00050A68B /* Util.swift */,
+				BF989E09253F3C7500D744EE /* Const.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				BF5991CE251A3C7C00C1F439 /* PDFGenerator.swift in Sources */,
 				BF7971B1253B9B7800E1ADB4 /* Extensions.swift in Sources */,
 				BF5991942519E97E00C1F439 /* SceneDelegate.swift in Sources */,
+				BF989E0A253F3C7500D744EE /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
