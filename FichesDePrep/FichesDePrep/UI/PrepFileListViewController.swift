@@ -13,9 +13,8 @@ class PrepFileListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    lazy var prepFiles: Results<PrepFile> = { RealmManager.shared.objects(PrepFile.self) }()
-    var completePrepFiles: [PrepFile] = []
-    var draftPrepFiles: [PrepFile] = []
+    lazy var completePrepFiles: Results<PrepFile> = { RealmManager.shared.objects(PrepFile.self).filter("isDraft = false") }()
+    lazy var draftPrepFiles: Results<PrepFile> = { RealmManager.shared.objects(PrepFile.self).filter("isDraft = true") }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +23,6 @@ class PrepFileListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        prepFiles = RealmManager.shared.objects(PrepFile.self)
-        completePrepFiles = prepFiles.filter({ !$0.isDraft })
-        draftPrepFiles = prepFiles.filter({ $0.isDraft })
         tableView.reloadData()
     }
     
@@ -63,5 +59,19 @@ extension PrepFileListViewController: UITableViewDelegate, UITableViewDataSource
         let dataSource = indexPath.section == 0 ? completePrepFiles : draftPrepFiles
 
         performSegue(withIdentifier: "showPDFPreview", sender: dataSource[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let updateAction = UIContextualAction(style: .normal, title: "Modifier") { (action, view, handler) in
+            
+        }
+        let deleteAction = UIContextualAction(style: .destructive, title: "Supprimer") { (_, _, _) in
+            let fileCategory = indexPath.section == 0 ? self.completePrepFiles : self.draftPrepFiles
+            RealmManager.shared.write {
+                RealmManager.shared.delete(fileCategory[indexPath.row])
+            }
+            tableView.reloadData()
+        }
+        return UISwipeActionsConfiguration(actions: [deleteAction, updateAction])
     }
 }
