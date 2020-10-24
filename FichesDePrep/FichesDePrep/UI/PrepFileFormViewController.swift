@@ -14,6 +14,10 @@ class PrepFileFormViewController: FormViewController {
     
     lazy var preferences: Results<Preferences> = { RealmManager.shared.objects(Preferences.self) }()
     var numberOfPhase = 1
+    var prepFile: PrepFile? = nil
+    var isModifyingFile: Bool = false
+    var saveButtonTitle: String = "Enregistrer"
+    var saveDraftButtonTitle: String = "Enregistrer comme brouillon"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,16 +29,18 @@ class PrepFileFormViewController: FormViewController {
                 $0.placeholder = "Saisir le titre"
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 50)
                 $0.tag = "title"
+                $0.value = prepFile?.title
             }
             <<< TextAreaRow() {
                 $0.placeholder = "Saisir le domaine d'activité"
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 110)
                 $0.tag = "activityDomain"
+                $0.value = prepFile?.activityKind
             }
             <<< IntRow() {
                 $0.title = "Séance n°"
                 $0.placeholder = "1"
-                $0.value = nil
+                $0.value = prepFile?.seanceNumber
                 $0.tag = "sessionNumber"
             }
             <<< PickerInputRow<String>() {
@@ -44,18 +50,18 @@ class PrepFileFormViewController: FormViewController {
                 if preferences.count > 0, let preferedLevel = preferences[0].level {
                     $0.value = preferedLevel
                 } else {
-                    $0.value = $0.options.first
+                    $0.value = prepFile?.level
                 }
             }
             <<< IntRow() {
                 $0.title = "Durée (en min)"
                 $0.placeholder = "5"
-                $0.value = nil
+                $0.value = prepFile?.duration
                 $0.tag = "sessionDuration"
             }
             <<< DateInlineRow() {
                 $0.title = "Date de la séance"
-                $0.value = Date()
+                $0.value = prepFile?.date
                 let formatter = DateFormatter()
                 formatter.locale = .current
                 formatter.dateStyle = .long
@@ -65,7 +71,7 @@ class PrepFileFormViewController: FormViewController {
             <<< IntRow() {
                 $0.title = "Cycle"
                 $0.placeholder = "1"
-                $0.value = nil
+                $0.value = prepFile?.cycle
                 $0.tag = "cycleNumber"
             }
             
@@ -74,80 +80,125 @@ class PrepFileFormViewController: FormViewController {
                 $0.placeholder = "Saisir l'objectif général"
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 110)
                 $0.tag = "mainGoal"
+                $0.value = prepFile?.mainGoal
             }
             <<< TextAreaRow() {
                 $0.placeholder = "Saisir l'objectif spécifique"
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 110)
                 $0.tag = "specificGoal"
+                $0.value = prepFile?.specificGoal
             }
             <<< TextAreaRow() {
                 $0.placeholder = "Saisir le matériel"
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 110)
                 $0.tag = "material"
+                $0.value = prepFile?.material
             }
         
-            +++ createPhaseSection(1, withRemoveButton: false)
-
-            +++ Section()
-            <<< ButtonRow() {
-                $0.title = "Enregistrer"
-            }
-            .onCellSelection { _, _ in
-                let values = self.form.values()
-                RealmManager.shared.write {
-                    RealmManager.shared.add(PrepFile(
-                                                title: values["title"] as? String,
-                                                activityKind: values["activityDomain"] as? String,
-                                                seanceNumber: values["sessionNumber"] as? Int,
-                                                level: values["level"] as? String,
-                                                duration: values["sessionDuration"] as? Int,
-                                                date: values["sessionDate"] as? Date,
-                                                cycle: values["cycleNumber"] as? Int,
-                                                mainGoal: values["mainGoal"] as? String,
-                                                specificGoal: values["specificGoal"] as? String,
-                                                material: values["material"] as? String,
-                                                phases: self.getPhasesData(),
-                                                isDraft: false))
+            if let prepFile = prepFile, let phases = prepFile.phases {
+                for (index, phase) in phases.list.enumerated() {
+                    form
+                    +++ createPhaseSection(index + 1, data: phase)
                 }
+            } else {
+                form
+                +++ createPhaseSection(1)
             }
+
+            form
+            +++ Section()
+                <<< ButtonRow() {
+                    $0.title = saveDraftButtonTitle
+                }
+                .onCellSelection { _, _ in
+                    self.savePrepFile(asDraft: true)
+                }
+                <<< ButtonRow() {
+                    $0.title = saveButtonTitle
+                }
+                .onCellSelection { _, _ in
+                    self.savePrepFile(asDraft: false)
+                }
     }
     
-    func createPhaseSection(_ number: Int, withRemoveButton: Bool = true) -> Section {
+    private func savePrepFile(asDraft: Bool) {
+        let values = self.form.values()
+        RealmManager.shared.write {
+            if isModifyingFile {
+                prepFile?.title = values["title"] as? String ?? ""
+                prepFile?.activityKind = values["activityDomain"] as? String ?? ""
+                prepFile?.seanceNumber = values["sessionNumber"] as? Int ?? 0
+                prepFile?.level = values["level"] as? String ?? ""
+                prepFile?.duration = values["sessionDuration"] as? Int ?? 0
+                prepFile?.date = values["sessionDate"] as? Date ?? Date()
+                prepFile?.cycle = values["cycleNumber"] as? Int ?? 0
+                prepFile?.mainGoal = values["mainGoal"] as? String ?? ""
+                prepFile?.specificGoal = values["specificGoal"] as? String ?? ""
+                prepFile?.material = values["material"] as? String ?? ""
+                prepFile?.phases = PhaseList(list: self.getPhasesData())
+                prepFile?.isDraft = asDraft
+            } else {
+                RealmManager.shared.add(PrepFile(
+                                            title: values["title"] as? String,
+                                            activityKind: values["activityDomain"] as? String,
+                                            seanceNumber: values["sessionNumber"] as? Int,
+                                            level: values["level"] as? String,
+                                            duration: values["sessionDuration"] as? Int,
+                                            date: values["sessionDate"] as? Date,
+                                            cycle: values["cycleNumber"] as? Int,
+                                            mainGoal: values["mainGoal"] as? String,
+                                            specificGoal: values["specificGoal"] as? String,
+                                            material: values["material"] as? String,
+                                            phases: self.getPhasesData(),
+                                            isDraft: asDraft))
+            }
+        }
+        if isModifyingFile {
+            let parent = (self.presentingViewController as? UITabBarController)?.selectedViewController as? PrepFileListViewController
+            self.dismiss(animated: true) {
+                parent?.updateTableview()
+            }
+        }
+    }
+
+    private func createPhaseSection(_ number: Int, data: Phase? = nil) -> Section {
         let newSection = Section("Phase n°\(number)")
             <<< TextAreaRow() {
                 $0.tag = "consigne-\(number)"
                 $0.placeholder = "Consignes"
+                if let data = data {
+                    $0.value = data.consigne
+                }
             }
             <<< IntRow() {
                 $0.tag = "phaseDuration-\(number)"
                 $0.title = "Durée"
                 $0.placeholder = "5mn"
+                if let data = data {
+                    $0.value = data.phaseDuration
+                }
             }
             <<< TextAreaRow() {
                 $0.tag = "teacherRole-\(number)"
                 $0.placeholder = "Rôle de l'enseignant"
+                if let data = data {
+                    $0.value = data.teacherRole
+                }
             }
             <<< TextAreaRow() {
                 $0.tag = "pupilRole-\(number)"
                 $0.placeholder = "Rôle de l'élève"
+                if let data = data {
+                    $0.value = data.pupilRole
+                }
             }
             <<< TextAreaRow() {
                 $0.tag = "differenciation-\(number)"
                 $0.placeholder = "Différenciation"
-            }
-        if withRemoveButton {
-            newSection
-                <<< ButtonRow() {
-                    $0.title = "Effacer phase"
-                }.onCellSelection { _, row in
-                    if let section = row.section, let index = section.index {
-                        self.numberOfPhase -= 1
-                        self.form.allSections[index].removeAll()
-                        self.form.remove(at: index)
-                        self.reSetPhaseNumber()
-                    }
+                if let data = data {
+                    $0.value = data.differenciation
                 }
-        }
+            }
         newSection
             <<< ButtonRow() {
                 $0.title = "Ajouter phase"
@@ -157,26 +208,10 @@ class PrepFileFormViewController: FormViewController {
         return newSection
     }
     
-    private func addPhase(_ number: Int? = nil, on row: ButtonRow) {
-        if let section = row.section, let index = section.index {
-            self.numberOfPhase += 1
-            let phaseNumber = number == nil ? self.numberOfPhase : number!
-            self.form.insert(self.createPhaseSection(phaseNumber), at: index + 1)
-            self.reSetPhaseNumber()
-        }
-    }
-    
-    private func reSetPhaseNumber() {
-        for index in 1...numberOfPhase {
-            let section = form.allSections[1 + index]
-            section.header?.title = "Phase n°\(index)"
-            section.allRows[0].tag = "consigne-\(index)"
-            section.allRows[1].tag = "phaseDuration-\(index)"
-            section.allRows[2].tag = "teacherRole-\(index)"
-            section.allRows[3].tag = "pupilRole-\(index)"
-            section.allRows[4].tag = "differenciation-\(index)"
-        }
-        tableView.reloadData()
+    private func addPhase(on row: ButtonRow) {
+        numberOfPhase += 1
+        form.insert(createPhaseSection(numberOfPhase),
+                    at: form.allSections.count - 1)
     }
     
     private func getPhasesData() -> [Phase] {

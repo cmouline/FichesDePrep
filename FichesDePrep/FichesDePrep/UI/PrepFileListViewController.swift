@@ -13,8 +13,8 @@ class PrepFileListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    lazy var completePrepFiles: Results<PrepFile> = { RealmManager.shared.objects(PrepFile.self).filter("isDraft = false") }()
-    lazy var draftPrepFiles: Results<PrepFile> = { RealmManager.shared.objects(PrepFile.self).filter("isDraft = true") }()
+    lazy var completePrepFiles: Results<PrepFile> = { RealmManager.shared.objects(PrepFile.self).filter("isDraft = false").sorted(byKeyPath: "date", ascending: false) }()
+    lazy var draftPrepFiles: Results<PrepFile> = { RealmManager.shared.objects(PrepFile.self).filter("isDraft = true").sorted(byKeyPath: "lastModificationDate", ascending: false) }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class PrepFileListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
+        updateTableview()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -34,9 +34,19 @@ class PrepFileListViewController: UIViewController {
             pdfPreviewVC.documentData = generator.createPDF()            
         }
     }
+    
+    func updateTableview() {
+        completePrepFiles = { RealmManager.shared.objects(PrepFile.self).filter("isDraft = false").sorted(byKeyPath: "date", ascending: false) }()
+        draftPrepFiles = { RealmManager.shared.objects(PrepFile.self).filter("isDraft = true").sorted(byKeyPath: "lastModificationDate", ascending: false) }()
+        tableView.reloadData()
+    }
 }
 
 extension PrepFileListViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return section == 0 ? "Fiches" : "Brouillons"
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -50,8 +60,9 @@ extension PrepFileListViewController: UITableViewDelegate, UITableViewDataSource
         let dataSource = indexPath.section == 0 ? completePrepFiles : draftPrepFiles
         
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "prepCell")
+        cell.selectionStyle = .none
         cell.textLabel?.text = dataSource[indexPath.row].title
-        cell.detailTextLabel?.text = dataSource[indexPath.row].creationDate.description(with: Locale.current)
+        cell.detailTextLabel?.text = Util.formatDate(dataSource[indexPath.row].date)
         return cell
     }
     
@@ -62,16 +73,37 @@ extension PrepFileListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let updateAction = UIContextualAction(style: .normal, title: "Modifier") { (action, view, handler) in
-            
-        }
-        let deleteAction = UIContextualAction(style: .destructive, title: "Supprimer") { (_, _, _) in
+        
+        let updateAction = UIContextualAction(style: .normal, title: "Modifier") { (_, _, completionHandler) in
             let fileCategory = indexPath.section == 0 ? self.completePrepFiles : self.draftPrepFiles
-            RealmManager.shared.write {
-                RealmManager.shared.delete(fileCategory[indexPath.row])
-            }
-            tableView.reloadData()
+            let prepFormVC = PrepFileFormViewController()
+            prepFormVC.prepFile = fileCategory[indexPath.row]
+            prepFormVC.isModifyingFile = true
+            prepFormVC.saveDraftButtonTitle = "Garder en brouillon"
+            prepFormVC.saveButtonTitle = "Terminer"
+            self.present(prepFormVC, animated: true, completion: nil)
+            completionHandler(true)
         }
+        updateAction.image = UIImage(systemName: "pencil")
+        updateAction.backgroundColor = .systemGreen
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "") { (_, _, completionHandler) in
+            let fileCategory = indexPath.section == 0 ? self.completePrepFiles : self.draftPrepFiles
+            let alert = UIAlertController(title: "Supprimer", message: "Voulez vous supprimer cette fiche ?", preferredStyle: .alert)
+            let deleteAction = UIAlertAction(title: "Supprimer", style: .destructive) { _ in
+                RealmManager.shared.write {
+                    RealmManager.shared.delete(fileCategory[indexPath.row])
+                }
+                completionHandler(true)
+                self.tableView.reloadData()
+            }
+            let cancelAction = UIAlertAction(title: "Annuler", style: .cancel, handler: nil)
+            alert.addAction(cancelAction)
+            alert.addAction(deleteAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+        deleteAction.image = UIImage(systemName: "trash")
+        deleteAction.backgroundColor = .systemRed
         return UISwipeActionsConfiguration(actions: [deleteAction, updateAction])
     }
 }
