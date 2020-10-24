@@ -60,35 +60,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CCb-nJ-DdK">
-                                <rect key="frame" x="16" y="50.5" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="CCb-nJ-DdK" secondAttribute="height" multiplier="1:1" id="BuU-qF-WmS"/>
-                                    <constraint firstAttribute="width" constant="50" id="MS0-0n-CyY"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="xmark.circle" catalog="system" symbolScale="large"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mes fiches" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifs-xy-X4W">
-                                <rect key="frame" x="74" y="60" width="266" height="30.5"/>
+                                <rect key="frame" x="16" y="60" width="382" height="30.5"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wd8-mY-zLu">
-                                <rect key="frame" x="348" y="50.5" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="EFb-Vb-LSi"/>
-                                    <constraint firstAttribute="width" secondItem="Wd8-mY-zLu" secondAttribute="height" multiplier="1:1" id="JnZ-md-gqG"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="tray.fill" catalog="system" symbolScale="large"/>
-                                </state>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5hv-XV-mXd">
                                 <rect key="frame" x="0.0" y="122.5" width="414" height="690.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -97,17 +74,13 @@
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ifs-xy-X4W" firstAttribute="leading" secondItem="CCb-nJ-DdK" secondAttribute="trailing" constant="8" id="0QN-JT-YW4"/>
                             <constraint firstItem="5hv-XV-mXd" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="0T9-V0-vQB"/>
-                            <constraint firstItem="CCb-nJ-DdK" firstAttribute="centerY" secondItem="Ifs-xy-X4W" secondAttribute="centerY" id="3oH-kB-z4R"/>
+                            <constraint firstItem="Ifs-xy-X4W" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="16" id="5Kv-Yh-9Za"/>
                             <constraint firstItem="5hv-XV-mXd" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="Q4M-fJ-wpG"/>
-                            <constraint firstItem="Wd8-mY-zLu" firstAttribute="centerY" secondItem="Ifs-xy-X4W" secondAttribute="centerY" id="ZUt-x3-OuH"/>
-                            <constraint firstItem="CCb-nJ-DdK" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="16" id="f37-Ih-2wJ"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="Ifs-xy-X4W" secondAttribute="trailing" constant="16" id="TiV-0l-HxJ"/>
                             <constraint firstItem="5hv-XV-mXd" firstAttribute="top" secondItem="Ifs-xy-X4W" secondAttribute="bottom" constant="32" id="jBP-UY-ihW"/>
                             <constraint firstItem="5hv-XV-mXd" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" id="oc4-Ms-GE0"/>
                             <constraint firstItem="Ifs-xy-X4W" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="16" id="sj2-Nv-WNW"/>
-                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="Wd8-mY-zLu" secondAttribute="trailing" constant="16" id="wdI-1r-E8J"/>
-                            <constraint firstItem="Wd8-mY-zLu" firstAttribute="leading" secondItem="Ifs-xy-X4W" secondAttribute="trailing" constant="8" id="ziX-wE-ogc"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Mes Fiches" image="doc.on.doc" catalog="system" selectedImage="doc.on.doc" id="cPa-gy-q4n">
@@ -166,7 +139,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cd0-IF-kZx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1640.5797101449277" y="359.59821428571428"/>
+            <point key="canvasLocation" x="1588" y="360"/>
         </scene>
         <!--Préférences-->
         <scene sceneID="KfS-W4-pDV">
@@ -183,10 +156,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="0K2-uE-1XN">
-                                <rect key="frame" x="0.0" y="122.5" width="414" height="628.5"/>
+                                <rect key="frame" x="0.0" y="122.5" width="414" height="608.5"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7T4-Vl-5rW" customClass="BMCButton" customModule="BuyMeACoffee">
-                                <rect key="frame" x="16" y="767" width="382" height="30"/>
+                                <rect key="frame" x="16" y="747" width="382" height="50"/>
                                 <state key="normal" title="Buy me a pizza"/>
                             </button>
                         </subviews>
@@ -240,7 +213,7 @@
     </scenes>
     <designables>
         <designable name="7T4-Vl-5rW">
-            <size key="intrinsicContentSize" width="104" height="30"/>
+            <size key="intrinsicContentSize" width="171" height="50"/>
         </designable>
     </designables>
     <resources>
@@ -248,8 +221,6 @@
         <image name="doc.plaintext" catalog="system" width="115" height="128"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
-        <image name="tray.fill" catalog="system" width="128" height="88"/>
-        <image name="xmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
