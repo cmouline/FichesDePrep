@@ -66,6 +66,43 @@ class PrepFile: Object {
         self.isDraft = isDraft
     }
     
+    convenience init(title: String? = nil, activityKind: String? = nil, seanceNumber: Int? = nil, level: String? = nil, duration: Int? = nil, date: Date? = nil, cycle: Int? = nil, mainGoal: String? = nil, specificGoal: String? = nil, material: String? = nil, phases: PhaseList = PhaseList(), isDraft: Bool = true) {
+        self.init()
+        if let tt = title {
+            self.title = tt
+        }
+        if let ak = activityKind {
+            self.domainActivity = ak
+        }
+        if let sn = seanceNumber {
+            self.sessionNumber = sn
+        }
+        if let lv = level {
+            self.level = lv
+        }
+        if let dt = duration {
+            self.duration = dt
+        }
+        if let dt = date {
+            self.date = dt
+        }
+        if let cl = cycle {
+            self.cycle = cl
+        }
+        if let mg = mainGoal {
+            self.mainGoal = mg
+        }
+        if let sg = specificGoal {
+            self.specificGoal = sg
+        }
+        if let mt = material {
+            self.material = mt
+        }
+        self.phases = phases
+        self.isDraft = isDraft
+    }
+    
+
     required init() {
 //        fatalError("init() has not been implemented")
     }

@@ -12,6 +12,7 @@ import RealmSwift
 class PrepFileListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noPrepFileView: UIView!
     
     lazy var completePrepFiles: Results<PrepFile> = { RealmManager.shared.objects(PrepFile.self).filter("isDraft = false").sorted(byKeyPath: "date", ascending: false) }()
     lazy var draftPrepFiles: Results<PrepFile> = { RealmManager.shared.objects(PrepFile.self).filter("isDraft = true").sorted(byKeyPath: "lastModificationDate", ascending: false) }()
@@ -38,6 +39,7 @@ class PrepFileListViewController: UIViewController {
     func updateTableview() {
         completePrepFiles = { RealmManager.shared.objects(PrepFile.self).filter("isDraft = false").sorted(byKeyPath: "date", ascending: false) }()
         draftPrepFiles = { RealmManager.shared.objects(PrepFile.self).filter("isDraft = true").sorted(byKeyPath: "lastModificationDate", ascending: false) }()
+        noPrepFileView.isHidden = !(completePrepFiles.count == 0 && draftPrepFiles.count == 0)
         tableView.reloadData()
     }
 }
@@ -49,6 +51,11 @@ extension PrepFileListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if completePrepFiles.count == 0 && draftPrepFiles.count == 0 {
+            return 0
+        } else if completePrepFiles.count == 0 || draftPrepFiles.count == 0 {
+            return 1
+        }
         return 2
     }
     
@@ -70,6 +77,33 @@ extension PrepFileListViewController: UITableViewDelegate, UITableViewDataSource
         let dataSource = indexPath.section == 0 ? completePrepFiles : draftPrepFiles
 
         performSegue(withIdentifier: "showPDFPreview", sender: dataSource[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let duplicateAction = UIContextualAction(style: .destructive, title: "") { (_, _, completionHandler) in
+            let fileCategory = indexPath.section == 0 ? self.completePrepFiles : self.draftPrepFiles
+            let fileToCopy: PrepFile = fileCategory[indexPath.row]
+            let copyPrepFile: PrepFile = PrepFile(title: "Copie de \(fileToCopy.title)",
+                                        activityKind: fileToCopy.domainActivity,
+                                        seanceNumber: fileToCopy.sessionNumber,
+                                        level: fileToCopy.level,
+                                        duration: fileToCopy.duration,
+                                        date: fileToCopy.date,
+                                        cycle: fileToCopy.cycle,
+                                        mainGoal: fileToCopy.mainGoal,
+                                        specificGoal: fileToCopy.specificGoal,
+                                        material: fileToCopy.material,
+                                        phases: fileToCopy.phases ?? PhaseList(),
+                                        isDraft: fileToCopy.isDraft)
+            RealmManager.shared.write {
+                RealmManager.shared.add(copyPrepFile)
+            }
+            completionHandler(true)
+            self.tableView.reloadData()
+        }
+        duplicateAction.image = UIImage(systemName: "doc.on.doc")
+        duplicateAction.backgroundColor = .systemBlue
+        return UISwipeActionsConfiguration(actions: [duplicateAction])
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -95,9 +129,11 @@ extension PrepFileListViewController: UITableViewDelegate, UITableViewDataSource
                     RealmManager.shared.delete(fileCategory[indexPath.row])
                 }
                 completionHandler(true)
-                self.tableView.reloadData()
+                self.updateTableview()
             }
-            let cancelAction = UIAlertAction(title: "Annuler", style: .cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: "Annuler", style: .cancel) { _ in 
+                completionHandler(true)
+            }
             alert.addAction(cancelAction)
             alert.addAction(deleteAction)
             self.present(alert, animated: true, completion: nil)
