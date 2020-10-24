@@ -15,8 +15,8 @@ class PrepFile: Object {
     @objc dynamic var lastModificationDate: Date = Date()
     @objc dynamic var title: String = "Pas de titre"
     
-    @objc dynamic var activityKind: String = ""
-    @objc dynamic var seanceNumber: Int = 0
+    @objc dynamic var domainActivity: String = ""
+    @objc dynamic var sessionNumber: Int = 0
     @objc dynamic var level: String = ""
     @objc dynamic var duration: Int = 0
     @objc dynamic var date: Date = Date()
@@ -30,16 +30,16 @@ class PrepFile: Object {
     
     @objc dynamic var isDraft: Bool = true
     
-    convenience init(title: String? = nil, activityKind: String? = nil, seanceNumber: Int? = nil, level: String? = nil, duration: Int? = nil, date: Date? = nil, cycle: Int? = nil, mainGoal: String? = nil, specificGoal: String? = nil, material: String? = nil, phases: [Phase] = [], isDraft: Bool = true) {
+    convenience init(title: String?, activityKind: String? = nil, seanceNumber: Int? = nil, level: String? = nil, duration: Int? = nil, date: Date? = nil, cycle: Int? = nil, mainGoal: String? = nil, specificGoal: String? = nil, material: String? = nil, phases: [Phase] = [], isDraft: Bool = true) {
         self.init()
         if let tt = title {
             self.title = tt
         }
         if let ak = activityKind {
-            self.activityKind = ak
+            self.domainActivity = ak
         }
         if let sn = seanceNumber {
-            self.seanceNumber = sn
+            self.sessionNumber = sn
         }
         if let lv = level {
             self.level = lv

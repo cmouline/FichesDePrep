@@ -35,12 +35,12 @@ class PrepFileFormViewController: FormViewController {
                 $0.placeholder = "Saisir le domaine d'activité"
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 110)
                 $0.tag = "activityDomain"
-                $0.value = prepFile?.activityKind
+                $0.value = prepFile?.domainActivity
             }
             <<< IntRow() {
                 $0.title = "Séance n°"
                 $0.placeholder = "1"
-                $0.value = prepFile?.seanceNumber
+                $0.value = prepFile?.sessionNumber
                 $0.tag = "sessionNumber"
             }
             <<< PickerInputRow<String>() {
@@ -126,8 +126,8 @@ class PrepFileFormViewController: FormViewController {
         RealmManager.shared.write {
             if isModifyingFile {
                 prepFile?.title = values["title"] as? String ?? ""
-                prepFile?.activityKind = values["activityDomain"] as? String ?? ""
-                prepFile?.seanceNumber = values["sessionNumber"] as? Int ?? 0
+                prepFile?.domainActivity = values["activityDomain"] as? String ?? ""
+                prepFile?.sessionNumber = values["sessionNumber"] as? Int ?? 0
                 prepFile?.level = values["level"] as? String ?? ""
                 prepFile?.duration = values["sessionDuration"] as? Int ?? 0
                 prepFile?.date = values["sessionDate"] as? Date ?? Date()

@@ -36,14 +36,14 @@ class PDFGenerator {
             
             let domainPosition = addText(ofWidth: pageWidth,
                                        entitled: "Domaine d'activité: ",
-                                       withText: prepFileData.activityKind)
+                                       withText: prepFileData.domainActivity)
             let titlePosition = addText(ofWidth: pageWidth,
                                       entitled: "Titre: ",
                                       withText: prepFileData.title,
                                       under: domainPosition.maxY)
             let sessionNumberPosition = addText(ofWidth: pageWidth / 2,
                                              entitled: "Séance nº: ",
-                                             withText: "\(prepFileData.seanceNumber)",
+                                             withText: "\(prepFileData.sessionNumber)",
                                              under: titlePosition.maxY)
             let _ = addText(ofWidth: pageWidth,
                             entitled: "Date: ",
