@@ -16,6 +16,15 @@ class RealmManager {
     let realm: Realm
     
     init() {
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(
+            schemaVersion: 1,
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 1) {
+                    migration.renameProperty(onType: PrepFile.className(), from: "activityKind", to: "domainActivity")
+                    migration.renameProperty(onType: PrepFile.className(), from: "seanceNumber", to: "sessionNumber")
+                }
+            })
+
         realm = try! Realm()
     }
     
