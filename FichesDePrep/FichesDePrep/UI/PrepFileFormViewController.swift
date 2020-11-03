@@ -211,6 +211,9 @@ class PrepFileFormViewController: FormViewController {
             self.dismiss(animated: true) {
                 parent?.updateTableview()
             }
+        } else {
+            resetForm("")
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }
     }
 
