@@ -17,6 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        let familyNames = UIFont.familyNames
+
+        for family in familyNames {
+            print("Family name " + family)
+            let fontNames = UIFont.fontNames(forFamilyName: family)
+            
+            for font in fontNames {
+                print("    Font name: " + font)
+            }
+        }
+
         IQKeyboardManager.shared.enable = true
         BMCManager.shared.configure(username: "cmoulinet")
         if RealmManager.shared.objects(Preferences.self).isEmpty {

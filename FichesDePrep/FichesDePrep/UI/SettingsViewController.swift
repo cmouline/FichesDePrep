@@ -23,17 +23,19 @@ class SettingsViewController: FormViewController {
             <<< PickerInputRow<String>() {
                 $0.title = "Niveau"
                 $0.options = Const.levels
-                $0.value = preferences[0].level ?? Const.levels[0]
+                $0.value = preferences.first?.level ?? Const.levels[0]
                 $0.tag = "level"
-            }.onRowValidationChanged({ cell, row in
+                $0.validationOptions = .validatesOnChange
+            }.onChange({row in
                 self.savePreferences(for: row.tag, row.value as Any)
             })
             <<< IntRow() {
                 $0.title = "Cycle"
                 $0.placeholder = "1"
-                $0.value = preferences[0].cycle - 1
+                $0.value = preferences.first?.cycle
                 $0.tag = "cycle"
-            }.onRowValidationChanged({ cell, row in
+                $0.validationOptions = .validatesOnChange
+            }.onChange({row in
                 self.savePreferences(for: row.tag, row.value as Any)
             })
         

@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,26 +20,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nouvelle fiche" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="on2-wV-t4N">
-                                <rect key="frame" x="16" y="60" width="382" height="30.5"/>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="28"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="16" y="60" width="382" height="34.5"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="28"/>
+                                <color key="textColor" name="lightPurple"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="132" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Zfw-jx-09K">
-                                <rect key="frame" x="0.0" y="122.5" width="414" height="690.5"/>
+                                <rect key="frame" x="0.0" y="126.5" width="414" height="686.5"/>
                                 <sections/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UhY-dv-3K1">
+                                <rect key="frame" x="376" y="64.5" width="22" height="25.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                    <imageReference key="image" image="arrow.counterclockwise" catalog="system" symbolScale="large" renderingMode="template"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                    </preferredSymbolConfiguration>
+                                </state>
+                                <connections>
+                                    <action selector="resetForm:" destination="9pv-A4-QxB" eventType="touchUpInside" id="YCh-G7-6sK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Zfw-jx-09K" firstAttribute="top" secondItem="on2-wV-t4N" secondAttribute="bottom" constant="32" id="3g8-gx-yFk"/>
+                            <constraint firstItem="UhY-dv-3K1" firstAttribute="centerY" secondItem="on2-wV-t4N" secondAttribute="centerY" id="5wr-Hg-eeJ"/>
                             <constraint firstItem="Zfw-jx-09K" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="Krs-tY-Hqg"/>
                             <constraint firstItem="Zfw-jx-09K" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="bwF-Ia-JHB"/>
                             <constraint firstItem="Zfw-jx-09K" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="hu1-4y-WUd"/>
                             <constraint firstItem="on2-wV-t4N" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="16" id="jnN-mO-0rB"/>
                             <constraint firstItem="on2-wV-t4N" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" constant="16" id="qMN-ZE-8VQ"/>
                             <constraint firstItem="on2-wV-t4N" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" constant="-16" id="u1g-l2-rDa"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="UhY-dv-3K1" secondAttribute="trailing" constant="16" id="zeZ-De-8Ev"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Nouvelle Fiche" image="doc.plaintext" catalog="system" selectedImage="doc.plaintext" id="acW-dT-cKf">
@@ -61,36 +79,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mes fiches" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifs-xy-X4W">
-                                <rect key="frame" x="16" y="60" width="382" height="30.5"/>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="28"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="16" y="60" width="382" height="34.5"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="28"/>
+                                <color key="textColor" name="lightPurple"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5hv-XV-mXd">
-                                <rect key="frame" x="0.0" y="122.5" width="414" height="690.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5hv-XV-mXd">
+                                <rect key="frame" x="0.0" y="126.5" width="414" height="686.5"/>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZ8-SY-Cdm">
-                                <rect key="frame" x="0.0" y="122.5" width="414" height="690.5"/>
+                                <rect key="frame" x="0.0" y="126.5" width="414" height="686.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Umn-2p-hBq">
-                                        <rect key="frame" x="132" y="240" width="150" height="211"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Umn-2p-hBq">
+                                        <rect key="frame" x="82" y="249" width="250" height="188.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc.text" catalog="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uw5-XQ-w8d">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                                <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uw5-XQ-w8d">
+                                                <rect key="frame" x="50" y="0.0" width="150" height="150"/>
+                                                <color key="tintColor" name="darkPurple"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="d1x-GB-9jI"/>
                                                     <constraint firstAttribute="height" constant="150" id="ljx-O2-vLU"/>
                                                 </constraints>
+                                                <imageReference key="image" image="doc.text" catalog="system" renderingMode="template"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vous n'avez pas encore de fiche" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qd3-ym-gKm">
-                                                <rect key="frame" x="0.0" y="170" width="150" height="41"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="6.5" y="170" width="237.5" height="18.5"/>
+                                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="vsy-UD-cxA"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -134,7 +155,7 @@
             <objects>
                 <viewController id="M4p-An-xeZ" customClass="PDFPreviewViewController" customModule="FichesDePrep" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F6k-FM-MGA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGp-S7-dhO" customClass="PDFView">
@@ -152,6 +173,7 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
+                                <color key="tintColor" name="lightPurple"/>
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AGe-vc-YMu"/>
@@ -184,13 +206,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mes préférences" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYn-gG-SEZ">
-                                <rect key="frame" x="16" y="60" width="382" height="30.5"/>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="28"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="16" y="60" width="382" height="34.5"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="28"/>
+                                <color key="textColor" name="lightPurple"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="0K2-uE-1XN">
-                                <rect key="frame" x="0.0" y="122.5" width="414" height="608.5"/>
+                                <rect key="frame" x="0.0" y="126.5" width="414" height="604.5"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7T4-Vl-5rW" customClass="BMCButton" customModule="BuyMeACoffee">
                                 <rect key="frame" x="16" y="747" width="382" height="50"/>
@@ -232,7 +254,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" systemColor="labelColor"/>
-                        <color key="selectedImageTintColor" systemColor="labelColor"/>
+                        <color key="selectedImageTintColor" name="lightPurple"/>
                     </tabBar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
@@ -251,11 +273,18 @@
         </designable>
     </designables>
     <resources>
+        <image name="arrow.counterclockwise" catalog="system" width="115" height="128"/>
         <image name="doc.on.doc" catalog="system" width="116" height="128"/>
         <image name="doc.plaintext" catalog="system" width="115" height="128"/>
         <image name="doc.text" catalog="system" width="115" height="128"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <namedColor name="darkPurple">
+            <color red="0.31299999356269836" green="0.1809999942779541" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="lightPurple">
+            <color red="0.53899997472763062" green="0.41200000047683716" blue="0.83499997854232788" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

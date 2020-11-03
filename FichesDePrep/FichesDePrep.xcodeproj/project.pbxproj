@@ -25,6 +25,7 @@
 		BF5991DA251B422A00C1F439 /* PDFPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991D9251B422A00C1F439 /* PDFPreviewViewController.swift */; };
 		BF5991DD251B452C00C1F439 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991DC251B452C00C1F439 /* RealmManager.swift */; };
 		BF5991E1251B888E00C1F439 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5991E0251B888E00C1F439 /* SettingsViewController.swift */; };
+		BF59E21225463B6800D99516 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF59E21125463B6800D99516 /* Colors.xcassets */; };
 		BF7971B1253B9B7800E1ADB4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7971B0253B9B7800E1ADB4 /* Extensions.swift */; };
 		BF7971FB253C2D0800E1ADB4 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7971FA253C2D0800E1ADB4 /* Preferences.swift */; };
 		BF989E0A253F3C7500D744EE /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF989E09253F3C7500D744EE /* Const.swift */; };
@@ -78,6 +79,7 @@
 		BF5991D9251B422A00C1F439 /* PDFPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewViewController.swift; sourceTree = "<group>"; };
 		BF5991DC251B452C00C1F439 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		BF5991E0251B888E00C1F439 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		BF59E21125463B6800D99516 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		BF7971B0253B9B7800E1ADB4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BF7971FA253C2D0800E1ADB4 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		BF989E09253F3C7500D744EE /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			children = (
 				BF5991A12519E98000C1F439 /* Info.plist */,
 				BF59919C2519E98000C1F439 /* Assets.xcassets */,
+				BF59E21125463B6800D99516 /* Colors.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF5991A02519E98000C1F439 /* LaunchScreen.storyboard in Resources */,
+				BF59E21225463B6800D99516 /* Colors.xcassets in Resources */,
 				BF59919D2519E98000C1F439 /* Assets.xcassets in Resources */,
 				BF59919B2519E97E00C1F439 /* Main.storyboard in Resources */,
 			);

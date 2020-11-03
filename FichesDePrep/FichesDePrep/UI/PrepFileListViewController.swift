@@ -69,7 +69,9 @@ extension PrepFileListViewController: UITableViewDelegate, UITableViewDataSource
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "prepCell")
         cell.selectionStyle = .none
         cell.textLabel?.text = dataSource[indexPath.row].title
-        cell.detailTextLabel?.text = Util.formatDate(dataSource[indexPath.row].date)
+        cell.textLabel?.font = UIFont(name: "AmericanTypewriter", size: 17)
+        cell.detailTextLabel?.text = "Séance du " + Util.formatDate(dataSource[indexPath.row].date)
+        cell.detailTextLabel?.font = UIFont(name: "AmericanTypewriter-Light", size: 14)
         return cell
     }
     

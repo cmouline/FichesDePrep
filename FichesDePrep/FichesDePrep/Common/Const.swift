@@ -10,5 +10,5 @@ import Foundation
 
 class Const {
     
-    static var levels: [String] = ["PS", "MS", "GS", "CP", "CE1", "CE2", "CM1", "CM2"]
+    static var levels: [String] = ["PS", "PS/MS", "MS", "MS/GS", "GS", "CP", "CE1", "CE1/CE2", "CE2", "CM1", "CM1/CM2", "CM2"]
 }

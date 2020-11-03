@@ -23,6 +23,33 @@ class PrepFileFormViewController: FormViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        let ATFont = UIFont(name: "AmericanTypewriter", size: 18)
+        
+        TextAreaRow.defaultCellSetup = { cell, row in
+            cell.placeholderLabel?.font = ATFont
+            cell.textView?.font = ATFont
+        }
+        IntRow.defaultCellSetup = { cell, row in
+            cell.textLabel?.font = ATFont
+        }
+        IntRow.defaultCellUpdate = { cell, row in
+            cell.textField.font = ATFont
+        }
+        ButtonRow.defaultCellSetup = { cell, row in cell.textLabel?.font = ATFont }
+        DateInlineRow.defaultCellSetup = { cell, row in
+            cell.textLabel?.font = ATFont
+            cell.detailTextLabel?.font = ATFont
+        }
+        DateInlineRow.defaultCellUpdate = { cell, row in
+            cell.detailTextLabel?.font = ATFont
+        }
+        PickerInputRow<String>.defaultCellSetup = { cell, row in
+            cell.textLabel?.font = ATFont
+        }
+        PickerInputRow<String>.defaultCellUpdate = { cell, row in
+            cell.detailTextLabel?.font = ATFont
+        }
+
         form
             +++ Section()
             <<< TextAreaRow() {
@@ -47,15 +74,11 @@ class PrepFileFormViewController: FormViewController {
                 $0.title = "Niveau"
                 $0.options = Const.levels
                 $0.tag = "level"
-                if preferences.count > 0, let preferedLevel = preferences[0].level {
-                    $0.value = preferedLevel
-                } else {
-                    $0.value = prepFile?.level
-                }
+                $0.value = prepFile?.level
             }
             <<< IntRow() {
                 $0.title = "Durée (en min)"
-                $0.placeholder = "5"
+                $0.placeholder = "20 min"
                 $0.value = prepFile?.duration
                 $0.tag = "sessionDuration"
             }
@@ -110,15 +133,45 @@ class PrepFileFormViewController: FormViewController {
                 <<< ButtonRow() {
                     $0.title = saveDraftButtonTitle
                 }
+                .cellSetup({ cell, row in
+                    cell.backgroundColor = UIColor(named: "lightPurple")
+                    cell.tintColor = .white
+                })
                 .onCellSelection { _, _ in
                     self.savePrepFile(asDraft: true)
                 }
                 <<< ButtonRow() {
                     $0.title = saveButtonTitle
                 }
+                .cellSetup({ cell, row in
+                    cell.backgroundColor = UIColor(named: "darkPurple")
+                    cell.tintColor = .white
+                })
                 .onCellSelection { _, _ in
                     self.savePrepFile(asDraft: false)
                 }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setPreferedValues()
+    }
+    
+    @IBAction func resetForm(_ sender: Any) {
+        for row in form.allRows {
+            row.baseValue = nil
+        }
+        setPreferedValues()
+        tableView.reloadData()
+    }
+    
+    private func setPreferedValues() {
+        if let preferedLevel = preferences.first?.level {
+            form.rowBy(tag: "level")?.baseValue = preferedLevel
+        }
+        if let preferedCycle = preferences.first?.cycle {
+            form.rowBy(tag: "cycleNumber")?.baseValue = preferedCycle
+        }
     }
     
     private func savePrepFile(asDraft: Bool) {
@@ -172,8 +225,8 @@ class PrepFileFormViewController: FormViewController {
             }
             <<< IntRow() {
                 $0.tag = "phaseDuration-\(number)"
-                $0.title = "Durée"
-                $0.placeholder = "5mn"
+                $0.title = "Durée (en min)"
+                $0.placeholder = "5 min"
                 if let data = data {
                     $0.value = data.phaseDuration
                 }
