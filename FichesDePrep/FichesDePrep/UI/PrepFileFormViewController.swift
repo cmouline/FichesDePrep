@@ -43,6 +43,13 @@ class PrepFileFormViewController: FormViewController {
         DateInlineRow.defaultCellUpdate = { cell, row in
             cell.detailTextLabel?.font = ATFont
         }
+        DateInlineRow.InlineRow.defaultRowInitializer = { row in
+            let frLocale = Locale(identifier: "fr_FR")
+            var calendar = Calendar(identifier: .iso8601)
+            calendar.locale = frLocale
+            row.cell.datePicker.locale = frLocale
+            row.cell.datePicker.calendar = calendar
+        }
         PickerInputRow<String>.defaultCellSetup = { cell, row in
             cell.textLabel?.font = ATFont
         }

@@ -51,11 +51,6 @@ extension PrepFileListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if completePrepFiles.count == 0 && draftPrepFiles.count == 0 {
-            return 0
-        } else if completePrepFiles.count == 0 || draftPrepFiles.count == 0 {
-            return 1
-        }
         return 2
     }
     
