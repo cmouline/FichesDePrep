@@ -14,7 +14,13 @@ class PrepFileFormViewController: FormViewController {
     
     lazy var preferences: Results<Preferences> = { RealmManager.shared.objects(Preferences.self) }()
     var numberOfPhase = 1
-    var prepFile: PrepFile? = nil
+    var prepFile: PrepFile? = nil {
+        didSet {
+            if let file = prepFile, let phases = file.phases {
+                numberOfPhase = phases.list.count
+            }
+        }
+    }
     var isModifyingFile: Bool = false
     var saveButtonTitle: String = "Enregistrer"
     var saveDraftButtonTitle: String = "Enregistrer comme brouillon"
