@@ -19,44 +19,32 @@ class PrepFileFormViewController: FormViewController {
     var saveButtonTitle: String = "Enregistrer"
     var saveDraftButtonTitle: String = "Enregistrer comme brouillon"
     
+    // MARK:- View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
-        let ATFont = UIFont(name: "AmericanTypewriter", size: 18)
-        
-        TextAreaRow.defaultCellSetup = { cell, row in
-            cell.placeholderLabel?.font = ATFont
-            cell.textView?.font = ATFont
+        setFormStyle()
+        createForm()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if !isModifyingFile {
+            setPreferedValues()
         }
-        IntRow.defaultCellSetup = { cell, row in
-            cell.textLabel?.font = ATFont
+    }
+    
+    // MARK:- IBActions
+    @IBAction func resetForm(_ sender: Any) {
+        for row in form.allRows {
+            row.baseValue = nil
         }
-        IntRow.defaultCellUpdate = { cell, row in
-            cell.textField.font = ATFont
-        }
-        ButtonRow.defaultCellSetup = { cell, row in cell.textLabel?.font = ATFont }
-        DateInlineRow.defaultCellSetup = { cell, row in
-            cell.textLabel?.font = ATFont
-            cell.detailTextLabel?.font = ATFont
-        }
-        DateInlineRow.defaultCellUpdate = { cell, row in
-            cell.detailTextLabel?.font = ATFont
-        }
-        DateInlineRow.InlineRow.defaultRowInitializer = { row in
-            let frLocale = Locale(identifier: "fr_FR")
-            var calendar = Calendar(identifier: .iso8601)
-            calendar.locale = frLocale
-            row.cell.datePicker.locale = frLocale
-            row.cell.datePicker.calendar = calendar
-        }
-        PickerInputRow<String>.defaultCellSetup = { cell, row in
-            cell.textLabel?.font = ATFont
-        }
-        PickerInputRow<String>.defaultCellUpdate = { cell, row in
-            cell.detailTextLabel?.font = ATFont
-        }
-
+        setPreferedValues()
+        tableView.reloadData()
+    }
+    
+    // MARK:- Form functions
+    private func createForm() {
         form
             +++ Section()
             <<< TextAreaRow() {
@@ -159,19 +147,96 @@ class PrepFileFormViewController: FormViewController {
                 }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setPreferedValues()
+    private func createPhaseSection(_ number: Int, data: Phase? = nil) -> Section {
+        let newSection = Section("Phase n°\(number)")
+            <<< TextAreaRow() {
+                $0.tag = "consigne-\(number)"
+                $0.placeholder = "Consignes"
+                if let data = data {
+                    $0.value = data.consigne
+                }
+            }
+            <<< IntRow() {
+                $0.tag = "phaseDuration-\(number)"
+                $0.title = "Durée (en min)"
+                $0.placeholder = "5 min"
+                if let data = data {
+                    $0.value = data.phaseDuration
+                }
+            }
+            <<< TextAreaRow() {
+                $0.tag = "teacherRole-\(number)"
+                $0.placeholder = "Rôle de l'enseignant"
+                if let data = data {
+                    $0.value = data.teacherRole
+                }
+            }
+            <<< TextAreaRow() {
+                $0.tag = "pupilRole-\(number)"
+                $0.placeholder = "Rôle de l'élève"
+                if let data = data {
+                    $0.value = data.pupilRole
+                }
+            }
+            <<< TextAreaRow() {
+                $0.tag = "differenciation-\(number)"
+                $0.placeholder = "Différenciation"
+                if let data = data {
+                    $0.value = data.differenciation
+                }
+            }
+        newSection
+            <<< ButtonRow() {
+                $0.title = "Ajouter phase"
+            }.onCellSelection { _, row in
+                self.addPhaseToForm(on: row)
+            }
+        return newSection
     }
     
-    @IBAction func resetForm(_ sender: Any) {
-        for row in form.allRows {
-            row.baseValue = nil
+    private func addPhaseToForm(on row: ButtonRow) {
+        numberOfPhase += 1
+        form.insert(createPhaseSection(numberOfPhase),
+                    at: form.allSections.count - 1)
+    }
+    
+    private func setFormStyle() {
+        let ATFont = UIFont(name: "AmericanTypewriter", size: 18)
+        
+        TextAreaRow.defaultCellSetup = { cell, row in
+            cell.placeholderLabel?.font = ATFont
+            cell.textView?.font = ATFont
         }
-        setPreferedValues()
-        tableView.reloadData()
+        IntRow.defaultCellSetup = { cell, row in
+            cell.textLabel?.font = ATFont
+        }
+        IntRow.defaultCellUpdate = { cell, row in
+            cell.textField.font = ATFont
+        }
+        ButtonRow.defaultCellSetup = { cell, row in cell.textLabel?.font = ATFont }
+        DateInlineRow.defaultCellSetup = { cell, row in
+            cell.textLabel?.font = ATFont
+            cell.detailTextLabel?.font = ATFont
+        }
+        DateInlineRow.defaultCellUpdate = { cell, row in
+            cell.detailTextLabel?.font = ATFont
+        }
+        DateInlineRow.InlineRow.defaultRowInitializer = { row in
+            let frLocale = Locale(identifier: "fr_FR")
+            var calendar = Calendar(identifier: .iso8601)
+            calendar.locale = frLocale
+            row.cell.datePicker.locale = frLocale
+            row.cell.datePicker.calendar = calendar
+        }
+        PickerInputRow<String>.defaultCellSetup = { cell, row in
+            cell.textLabel?.font = ATFont
+        }
+        PickerInputRow<String>.defaultCellUpdate = { cell, row in
+            cell.detailTextLabel?.font = ATFont
+        }
     }
-    
+
+    // MARK:- Set and save form values
     private func setPreferedValues() {
         if let preferedLevel = preferences.first?.level {
             form.rowBy(tag: "level")?.baseValue = preferedLevel
@@ -224,59 +289,6 @@ class PrepFileFormViewController: FormViewController {
         }
     }
 
-    private func createPhaseSection(_ number: Int, data: Phase? = nil) -> Section {
-        let newSection = Section("Phase n°\(number)")
-            <<< TextAreaRow() {
-                $0.tag = "consigne-\(number)"
-                $0.placeholder = "Consignes"
-                if let data = data {
-                    $0.value = data.consigne
-                }
-            }
-            <<< IntRow() {
-                $0.tag = "phaseDuration-\(number)"
-                $0.title = "Durée (en min)"
-                $0.placeholder = "5 min"
-                if let data = data {
-                    $0.value = data.phaseDuration
-                }
-            }
-            <<< TextAreaRow() {
-                $0.tag = "teacherRole-\(number)"
-                $0.placeholder = "Rôle de l'enseignant"
-                if let data = data {
-                    $0.value = data.teacherRole
-                }
-            }
-            <<< TextAreaRow() {
-                $0.tag = "pupilRole-\(number)"
-                $0.placeholder = "Rôle de l'élève"
-                if let data = data {
-                    $0.value = data.pupilRole
-                }
-            }
-            <<< TextAreaRow() {
-                $0.tag = "differenciation-\(number)"
-                $0.placeholder = "Différenciation"
-                if let data = data {
-                    $0.value = data.differenciation
-                }
-            }
-        newSection
-            <<< ButtonRow() {
-                $0.title = "Ajouter phase"
-            }.onCellSelection { _, row in
-                self.addPhase(on: row)
-            }
-        return newSection
-    }
-    
-    private func addPhase(on row: ButtonRow) {
-        numberOfPhase += 1
-        form.insert(createPhaseSection(numberOfPhase),
-                    at: form.allSections.count - 1)
-    }
-    
     private func getPhasesData() -> [Phase] {
         var phases: [Phase] = []
         let values = self.form.values()
