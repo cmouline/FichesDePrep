@@ -72,9 +72,13 @@ extension PrepFileListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let dataSource = indexPath.section == 0 ? completePrepFiles : draftPrepFiles
-
-        performSegue(withIdentifier: "showPDFPreview", sender: dataSource[indexPath.row])
+        let fileCategory = indexPath.section == 0 ? self.completePrepFiles : self.draftPrepFiles
+        let prepFormVC = PrepFileFormViewController()
+        prepFormVC.prepFile = fileCategory[indexPath.row]
+        prepFormVC.isModifyingFile = true
+        prepFormVC.saveDraftButtonTitle = "Garder en brouillon"
+        prepFormVC.saveButtonTitle = "Terminer"
+        self.present(prepFormVC, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -106,18 +110,14 @@ extension PrepFileListViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let updateAction = UIContextualAction(style: .normal, title: "Modifier") { (_, _, completionHandler) in
-            let fileCategory = indexPath.section == 0 ? self.completePrepFiles : self.draftPrepFiles
-            let prepFormVC = PrepFileFormViewController()
-            prepFormVC.prepFile = fileCategory[indexPath.row]
-            prepFormVC.isModifyingFile = true
-            prepFormVC.saveDraftButtonTitle = "Garder en brouillon"
-            prepFormVC.saveButtonTitle = "Terminer"
-            self.present(prepFormVC, animated: true, completion: nil)
+        let generatePDFAction = UIContextualAction(style: .normal, title: "Modifier") { (_, _, completionHandler) in
+            let dataSource = indexPath.section == 0 ? self.completePrepFiles : self.draftPrepFiles
+
+            self.performSegue(withIdentifier: "showPDFPreview", sender: dataSource[indexPath.row])
             completionHandler(true)
         }
-        updateAction.image = UIImage(systemName: "pencil")
-        updateAction.backgroundColor = .systemGreen
+        generatePDFAction.image = UIImage(systemName: "doc.plaintext")
+        generatePDFAction.backgroundColor = .systemGreen
         
         let deleteAction = UIContextualAction(style: .destructive, title: "") { (_, _, completionHandler) in
             let fileCategory = indexPath.section == 0 ? self.completePrepFiles : self.draftPrepFiles
@@ -138,6 +138,6 @@ extension PrepFileListViewController: UITableViewDelegate, UITableViewDataSource
         }
         deleteAction.image = UIImage(systemName: "trash")
         deleteAction.backgroundColor = .systemRed
-        return UISwipeActionsConfiguration(actions: [deleteAction, updateAction])
+        return UISwipeActionsConfiguration(actions: [deleteAction, generatePDFAction])
     }
 }
