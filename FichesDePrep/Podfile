@@ -10,7 +10,6 @@ target 'FichesDePrep' do
   pod 'IQKeyboardManagerSwift'
   pod 'Eureka'
   pod 'BuyMeACoffee', '~> 1.0'
-  pod 'PMAlertController'
 
   target 'FichesDePrepTests' do
     inherit! :search_paths
