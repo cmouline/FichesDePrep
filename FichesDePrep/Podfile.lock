@@ -2,6 +2,7 @@ PODS:
   - BuyMeACoffee (1.0.4)
   - Eureka (5.3.1)
   - IQKeyboardManagerSwift (6.5.6)
+  - PMAlertController (4.0.1)
   - Realm (5.3.3):
     - Realm/Headers (= 5.3.3)
   - Realm/Headers (5.3.3)
@@ -12,6 +13,7 @@ DEPENDENCIES:
   - BuyMeACoffee (~> 1.0)
   - Eureka
   - IQKeyboardManagerSwift
+  - PMAlertController
   - RealmSwift
 
 SPEC REPOS:
@@ -19,6 +21,7 @@ SPEC REPOS:
     - BuyMeACoffee
     - Eureka
     - IQKeyboardManagerSwift
+    - PMAlertController
     - Realm
     - RealmSwift
 
@@ -26,9 +29,10 @@ SPEC CHECKSUMS:
   BuyMeACoffee: cf673e0f454c52962f652ded48fe0be375290605
   Eureka: 859877ab1e85661b6b7e810015d430e937d9cc7d
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  PMAlertController: ab5fcf4d085b7878c9451466d701449c4bf6efb8
   Realm: 2d57ea355bf8ca2a0964d6bfb38d28d7ff2addf6
   RealmSwift: 0a709536ecea30eea1d3c514f6ade2ed078dee3c
 
-PODFILE CHECKSUM: 669bf8912106ce040281883a7b421762793c31f1
+PODFILE CHECKSUM: a0229f85cd17455fda6687639580e3e4046409ed
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.8.4
