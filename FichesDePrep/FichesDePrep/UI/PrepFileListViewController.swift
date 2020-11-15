@@ -32,6 +32,7 @@ class PrepFileListViewController: UIViewController {
             let pdfPreviewVC = segue.destination as! PDFPreviewViewController
             let prepFile = sender as! PrepFile
             let generator = PDFGenerator(prepFile: prepFile)
+            pdfPreviewVC.prepFile = prepFile
             pdfPreviewVC.documentData = generator.createPDF()            
         }
     }

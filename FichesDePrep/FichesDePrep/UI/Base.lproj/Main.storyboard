@@ -166,6 +166,12 @@
                                 <rect key="frame" x="0.0" y="759" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="o9L-Uk-3QC"/>
+                                    <barButtonItem title="Supprimer phase" id="wOL-Et-Z4y">
+                                        <connections>
+                                            <action selector="phaseOrganizingAction:" destination="M4p-An-xeZ" id="snc-SW-nNa"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="60" style="plain" systemItem="fixedSpace" id="WDg-y2-82T"/>
                                     <barButtonItem title="Partager" id="1rB-Do-rRk">
                                         <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="large" renderingMode="template"/>
                                         <connections>
